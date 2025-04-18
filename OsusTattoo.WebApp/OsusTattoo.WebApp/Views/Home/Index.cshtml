@@ -71,51 +71,140 @@
 </div>
 
 <div style="background-color: #000002;">
-    <div class="container">
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-            <div class="col col-sm-2">
-            </div>
-            <div class="col-sm-auto">
-                <h2><b style="color: white;">Shop Categories</b></h2>
-            </div>
-            <div class="col col-sm-2">
-            </div>
-        </div>
+    <img src="~/Content/image/new-arrival.png" />
+</div>
 
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
-            <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
-            </div>
-            <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
-            </div>
-            <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
-            </div>
-            <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
-            </div>
-            <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+<div>
+    <div class="container-fluid text-center my-3">
+        <div class="row">
+            <div class="row mx-auto my-auto justify-content-center">
+                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img card-img-top">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 1" src="https://cdn.pixabay.com/photo/2020/09/26/07/05/sea-5603351_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 1</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 5" src="https://cdn.pixabay.com/photo/2020/06/15/17/35/me-nots-5302712_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 5</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img card-img-top">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 2" src="https://cdn.pixabay.com/photo/2022/03/02/13/42/peace-7043225_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 3" src="https://cdn.pixabay.com/photo/2020/03/09/17/51/narcis-4916584_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 3</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 4" src="https://cdn.pixabay.com/photo/2022/03/04/15/14/river-7047522_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img alt="Slide 5" src="https://cdn.pixabay.com/photo/2020/06/15/17/35/me-nots-5302712_1280.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-img-overlay">Slide 5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5 col-md-12">
+                    
+                </div>
+                <a class="carousel-control-prev bg-transparent w-aut" href="#myCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #727070;"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#myCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #727070;"></span>
+                </a>
             </div>
         </div>
     </div>
 </div>
 
+<div>
+    
+</div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        function initCarousel() {
+            $(".carousel-item").each(function () {
+                var i = $(this).next();
+                i.length || (i = $(this).siblings(":first")),
+                    i.children(":first-child").clone().appendTo($(this));
+
+                for (var n = 0; n < 4; n++)
+                    (i = i.next()).length || (i = $(this).siblings(":first")),
+                        i.children(":first-child").clone().appendTo($(this));
+            });
+        }
+        $(window).on({
+            resize: initCarousel(),
+            load: initCarousel()
+        });
+    });
+</script>
 
 @*<div class="row mb-lg-3 text-center">
-    <div class="col-12 themed-grid-col">
-        1 of 3
+        <div class="col-12 themed-grid-col">
+            1 of 3
+        </div>
     </div>
-</div>
-<div class="row mb-lg-3 text-center">
-    <div class="col-12 themed-grid-col">
-        1 of 3
+    <div class="row mb-lg-3 text-center">
+        <div class="col-12 themed-grid-col">
+            1 of 3
+        </div>
     </div>
-</div>
-<div class="row mb-lg-3 text-center">
-    <div class="col-12 themed-grid-col">
-        1 of 3
-    </div>
-</div>*@
+    <div class="row mb-lg-3 text-center">
+        <div class="col-12 themed-grid-col">
+            1 of 3
+        </div>
+    </div>*@

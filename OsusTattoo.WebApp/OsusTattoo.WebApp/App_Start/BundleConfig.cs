@@ -25,6 +25,7 @@ namespace OsusTattoo.WebApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-glyphicons.css",
+                      "~/Content/custom-css/custom-carousel.css",
                       "~/Content/site.css"));
         }
     }
