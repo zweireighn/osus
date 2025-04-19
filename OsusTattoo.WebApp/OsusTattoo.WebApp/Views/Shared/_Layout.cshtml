@@ -41,7 +41,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #000002;">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #000002;">
         <div class="container" style="margin-top: 2%;">
             <a href="@Url.Action("Index", "Home", new { })">
@@ -70,12 +70,13 @@
     </div>
 
     @RenderBody()
-
-    <div class="container body-content">
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Lickytongue</p>
-        </footer>
+    <div style="background-color: #000002;">
+        <div class="container body-content">
+            <hr style="background-color: #707272; height: 1px; border: 0;" />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Lickytongue</p>
+            </footer>
+        </div>
     </div>
 </body>
 </html>
