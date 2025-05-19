@@ -1,0 +1,233 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .carousel-indicators button.thumbnail {
+            width: 100px;
+            height: auto;
+        }
+
+            .carousel-indicators button.thumbnail:not(.active) {
+                opacity: 0.7;
+            }
+
+            .carousel-indicators button.thumbnail.active {
+                border: thin;
+                border-style: solid;
+                border-color: red;
+            }
+
+        .carousel-indicators {
+            position: static;
+        }
+
+        @@media screen and (min-width: 992px) {
+            .carousel {
+                max-width: 70%;
+                margin: 0 auto;
+            }
+        }
+
+        .variation {
+            background-color: lightgray;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+        }
+
+            .variation label {
+                cursor: pointer;
+            }
+    </style>
+</head>
+
+<div style="background-color: #ffffff;">
+    <div class="row justify-content-md-center" style="">
+        <div class="col col-sm-2">
+        </div>
+        <div class="col-sm-auto" style="margin-top: 2%;">
+            <h2><b style="color: #000000;">Product Details</b></h2>
+        </div>
+        <div class="col col-sm-2">
+        </div>
+    </div>
+    <div class="row" style="width: 95%; margin: auto; margin-top: 2%;">
+        @*Product Details*@
+        <div class="col-sm-6">
+            <!-- Carousel wrapper (Limit Img Thumbnail to 5)-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active thumbnail" aria-current="true" aria-label="Slide 1">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-2.jpg" class="d-block w-100" alt="...">
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="thumbnail" aria-label="Slide 2">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-1.jpg" class="d-block w-100" alt="...">
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="thumbnail" aria-label="Slide 3">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-3.jpg" class="d-block w-100" alt="...">
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class="thumbnail" aria-label="Slide 2">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-1.jpg" class="d-block w-100" alt="...">
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" class="thumbnail" aria-label="Slide 5">
+                        <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-3.jpg" class="d-block w-100" alt="...">
+                    </button>
+                </div>
+            </div>
+
+            <br>
+            <!-- Carousel wrapper -->
+        </div>
+        @*End Product Details*@
+
+        @*Product Variations*@
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-1">
+                        <h1 class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-1">
+                        <label class="origPrice form-label" style="text-decoration: line-through; font-size: x-large;">₱ 279.00</label>
+                        <label class="form-label dcPrice" style="color: #ED1C24; font-size: x-large;">₱ 279.00</label>
+                    </div>
+                </div>
+            </div>
+
+            @*HR*@
+            <div class="row">
+                <div class="col">
+                    <div class="mb-1">
+                        <hr style="border-color: dimgray;" />
+                    </div>
+                </div>
+            </div>
+            @*End HR*@
+
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">x</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxxx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxxxx</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">x</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxxx</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 variation">
+                        <label class="form-label">xxxxx</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-1">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-secondary" type="button">Add to Cart</button>
+                            <button class="btn btn-dark" type="button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*End Product Variations*@
+    </div>
+
+    <div style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
+        <div class="container">
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+                <div class="col col-sm-2">
+                </div>
+                <div class="col-sm-auto">
+                    <h2><b style="color: white;">You might Also Like</b></h2>
+                </div>
+                <div class="col col-sm-2">
+                </div>
+            </div>
+
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+                <div class="col">
+                    <img src="~/Content/image/img-thumb.png" />
+                </div>
+                <div class="col">
+                    <img src="~/Content/image/img-thumb.png" />
+                </div>
+                <div class="col">
+                    <img src="~/Content/image/img-thumb.png" />
+                </div>
+                <div class="col">
+                    <img src="~/Content/image/img-thumb.png" />
+                </div>
+                <div class="col">
+                    <img src="~/Content/image/img-thumb.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(".mainBanner").css("display", "none");
+</script>

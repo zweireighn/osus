@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link", @style = "color:white;" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link", @style = "color:white;" })</li>
+                    <li>@Html.ActionLink("Products", "AllProducts", "Products", new { area = "" }, new { @class = "nav-link", @style = "color:white;" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link", @style = "color:white;" })</li>
                 </ul>
                 <form class="d-flex">
@@ -70,6 +70,28 @@
     </div>
 
     @RenderBody()
+
+    <div class="container" style="background-color: #000002;">
+        <div class="row" style="margin-top: 3%;">
+            <div class="col-2"><img src="~/Content/image/osus-logo-footer.png" style="width: 100px;" class="float-sm-end" /></div>
+            <div class="col-4">
+                <b style="color: #ffffff;"><label class="form-label">About Us</label></b>
+                <p class="form-p">Driven by passion and precision, our team is dedicated to delivering the best tatoo supplies in the Philippines</p>
+            </div>
+            <div class="col-3">
+                <b style="color: #ffffff;"><label class="form-label">Quick Links</label></b>
+                <p class="form-p">Featured Products</p>
+                <p class="form-p">Best Sellers</p>
+                <p class="form-p">All Products</p>
+            </div>
+            <div class="col-3">
+                <b style="color: #ffffff;"><label class="form-label">Info</label></b>
+                <p class="form-p">Artists</p>
+                <p class="form-p">Events</p>
+                <p class="form-p">Contact Us</p>
+            </div>
+        </div>
+    </div>
     <div style="background-color: #000002;">
         <div class="container body-content">
             <hr style="background-color: #707272; height: 1px; border: 0;" />
