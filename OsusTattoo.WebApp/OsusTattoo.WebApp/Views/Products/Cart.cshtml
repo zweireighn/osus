@@ -29,6 +29,10 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        .tablePrice {
+            margin-top: 8%;
+        }
     </style>
 </head>
 
@@ -37,7 +41,7 @@
         <div class="col col-sm-2">
         </div>
         <div class="col-sm-auto" style="margin-top: 2%;">
-            <h2><b style="color: #000000;">Your Cart</b></h2>
+            <h2><b style="color: #000000;">Checkout</b></h2>
         </div>
         <div class="col col-sm-2">
         </div>
@@ -50,6 +54,7 @@
                         <th scope="col">Product</th>
                         <th scope="col">Quantity</th>
                         <th scope="col"><label class="float-end">Total</label></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +77,10 @@
                             </div>
                         </td>
                         <td style="align-content: center;">
-                            <label class="float-end">₱ 279.00</label>
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
                         </td>
                     </tr>
                     <tr>
@@ -94,7 +102,10 @@
                             </div>
                         </td>
                         <td style="align-content: center;">
-                            <label class="float-end">₱ 279.00</label>
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
                         </td>
                     </tr>
                     <tr>
@@ -113,10 +124,14 @@
                                 <span class="minus">-</span>
                                 <input type="text" value="1" />
                                 <span class="plus">+</span>
+
                             </div>
                         </td>
                         <td style="align-content: center;">
-                            <label class="float-end">₱ 279.00</label>
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
                         </td>
                     </tr>
                 </tbody>

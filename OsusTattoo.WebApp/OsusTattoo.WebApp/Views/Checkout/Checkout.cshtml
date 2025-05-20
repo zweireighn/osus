@@ -2,6 +2,131 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <style>
+    </style>
+</head>
+
+<div style="background-color: #ffffff;">
+    <div class="row justify-content-md-center" style="">
+        <div class="col col-sm-2">
+        </div>
+        <div class="col-sm-auto" style="margin-top: 2%;">
+            <h2><b style="color: #000000;">Your Cart</b></h2>
+        </div>
+        <div class="col col-sm-2">
+        </div>
+    </div>
+    <div class="row" style="width: 95%; margin: auto; margin-top: 2%;">
+        @*Main Info*@
+        <div class="col-sm-6" style="background-color: whitesmoke;">
+            <form>
+                <div class="mb-3">
+                    <p class="fs-1 fw-bold">Contact Information</p>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mobile Number">
+                </div>
+                <div class="mb-3">
+                    <p class="fs-1 fw-bold">Address Information</p>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Region">
+                </div>
+            </form>
+        </div>
+
+        @*Items*@
+        <div class="col-sm-6">
+            <table class="table table-responsive-sm" style="margin: auto;">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col"><label class="float-end">Total</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                <div class="col-6 col-sm-3">
+                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">1</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                <div class="col-6 col-sm-3">
+                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">1</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                <div class="col-6 col-sm-3">
+                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">1</p>
+                        </td>
+                        <td style="align-content: center;">
+                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--<div class="bottomPart">
+        <div class="row">
+            <div class="col-4 col-sm-4"></div>
+            <div class="col-4 col-sm-4"><div class="float-end">Subtotal:</div></div>
+            <div class="col-4 col-sm-4">₱ 279.00</div>-->
+
+            <!-- Force next columns to break to new line at md breakpoint and up -->
+            <!--<div class="w-100 d-none d-md-block"></div>
+
+            <div class="col-4 col-sm-4"></div>
+            <div class="col-4 col-sm-4"></div>
+            <div class="col-4 col-sm-4"><button class="btn btn-dark" type="button" style="margin-left: -15%; margin-top: 2%; margin-bottom: 20%; width: inherit;">Buy Now</button></div>
+        </div>
+    </div>-->
+</div>
+
 <script type="text/javascript">
     $(".mainBanner").css("display", "none");
 </script>
