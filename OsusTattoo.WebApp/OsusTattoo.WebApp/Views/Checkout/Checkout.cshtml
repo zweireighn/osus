@@ -4,6 +4,9 @@
 
 <head>
     <style>
+        .paymentNote {
+            height: 200px
+        }
     </style>
 </head>
 
@@ -20,95 +23,221 @@
     <div class="row" style="width: 95%; margin: auto; margin-top: 2%;">
         @*Main Info*@
         <div class="col-sm-6" style="background-color: whitesmoke;">
-            <form>
-                <div class="mb-3">
-                    <p class="fs-1 fw-bold">Contact Information</p>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mobile Number">
-                </div>
-                <div class="mb-3">
-                    <p class="fs-1 fw-bold">Address Information</p>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Region">
-                </div>
-            </form>
+            <div class="container">
+                <form>
+                    <div class="mb-3">
+                        <p class="fs-1 fw-bold">Contact Information</p>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mobile Number">
+                    </div>
+                    <div class="mb-3">
+                        <p class="fs-1 fw-bold">Address Information</p>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="" placeholder="First Name" />
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="Last Name" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="" placeholder="Postal Code" />
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="" placeholder="City" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="" placeholder="Address" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="" placeholder="Apartment, suit (optional)" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="" placeholder="Apartment, suit (optional)" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Save this information
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-3">
+                            <label for="exampleFormControlInput1" class="form-label" style="font-weight: bolder;">Shipping Method:</label>
+                        </div>
+                        <div class="col-sm-9" style="">
+                            <div class="container">
+                                <div class="col-md-2 px-3 float-end">
+                                    <img src="~/Content/image/JT-Express-Logo.png" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="fs-1 fw-bold">Payment</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="paymentNote alert alert-warning">
+                            <div class="mb-3">
+                                <p class="fs-2 fw-bold">Cash On Delivery (COD)</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fs-4">• Your Order will be delivered withint 2-5 days after confirmation</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fs-4">• Please pay exact amount of your order</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fs-4">• Strictly No cancellation once orders are processed</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
         @*Items*@
         <div class="col-sm-6">
-            <table class="table table-responsive-sm" style="margin: auto;">
-                <thead>
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col"><label class="float-end">Total</label></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
+            <div class="container">
+                <div class="mb-5">
+                    <table class="table table-responsive-sm" style="margin: auto;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col"><label class="float-end">Total</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                        <div class="col-6 col-sm-3">
+                                            <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                            <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                            <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="align-content: center;">
+                                    <label>1</label>
+                                </td>
+                                <td style="align-content: center;">
+                                    <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                        <div class="col-6 col-sm-3">
+                                            <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                            <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                            <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="align-content: center;">
+                                    <label>1</label>
+                                </td>
+                                <td style="align-content: center;">
+                                    <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                        <div class="col-6 col-sm-3">
+                                            <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                            <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
+                                            <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="align-content: center;">
+                                    <label>1</label>
+                                </td>
+                                <td style="align-content: center;">
+                                    <p class="tablePrice float-end fs-1">₱ 279.00</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="fs-4">Shipping Fee:</p>
                             </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">1</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
+                            <div class="col-sm-9">
+                                <p class="fs-4 float-end">₱ 279.00</p>
                             </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">1</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="fs-4">Voucher:</p>
                             </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">1</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <div class="col-sm-9">
+                                <p class="fs-4 float-end">₱ 0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-1">
+                            <hr style="border-color: dimgray;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="fs-2 fw-bold">Total:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="fs-2 fw-bold float-end">₱ 0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-dark" type="button">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--<div class="bottomPart">
@@ -116,9 +245,8 @@
             <div class="col-4 col-sm-4"></div>
             <div class="col-4 col-sm-4"><div class="float-end">Subtotal:</div></div>
             <div class="col-4 col-sm-4">₱ 279.00</div>-->
-
-            <!-- Force next columns to break to new line at md breakpoint and up -->
-            <!--<div class="w-100 d-none d-md-block"></div>
+    <!-- Force next columns to break to new line at md breakpoint and up -->
+    <!--<div class="w-100 d-none d-md-block"></div>
 
             <div class="col-4 col-sm-4"></div>
             <div class="col-4 col-sm-4"></div>
