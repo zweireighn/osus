@@ -6,76 +6,150 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
+        .mainPanelDiv {
+            margin-top: 2%;
+        }
+
+        .mainPanelDivH {
+            height: 450px;
+            max-height: 450px;
+        }
+
+        category {
+            text-decoration: none;
+            color: black;
+        }
+
+        .link-arrow p {
+            display: inline-block;
+            transition: 0.1s ease-in;
+        }
+
+        .link-arrow:hover p {
+            transform: translateX(50%);
+        }
     </style>
 </head>
+<div class="mainPanelDivH" style="background-color: #ffffff;">
+    <div class="container">
+        <div class="row justify-content-md-center" style="">
+            <div class="col col-sm-2">
+            </div>
+            <div class="col-sm-auto mainPanelDiv">
+                <h2><b style="font-weight: bold;">Featured Products</b></h2>
+            </div>
+            <div class="col col-sm-2">
+            </div>
+        </div>
 
-<div class="container body-content">
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-        <div class="col col-sm-2">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 mainPanelDiv">
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                    <label class="origPrice" style="text-decoration: line-through;">₱ 279.00</label>
+                    <label class="form-label" style="color: #ED1C24;">₱ 279.00</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                    <label class="origPrice" style="display: none;">₱ 279.00</label>
+                    <label class="form-label">₱ 279.00</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                    <label class="origPrice" style="display: none;">₱ 279.00</label>
+                    <label class="form-label">₱ 279.00</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                    <label class="origPrice" style="display: none;">₱ 279.00</label>
+                    <label class="form-label">₱ 279.00</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                    <label class="origPrice" style="display: none;">₱ 279.00</label>
+                    <label class="form-label">₱ 279.00</label>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-auto">
-            <h2><b>Featured Products</b></h2>
-        </div>
-        <div class="col col-sm-2">
-        </div>
-    </div>
 
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
-        <div class="col">
-            <img src="~/Content/image/img-thumb.png" />
-        </div>
-        <div class="col">
-            <img src="~/Content/image/img-thumb.png" />
-        </div>
-        <div class="col">
-            <img src="~/Content/image/img-thumb.png" />
-        </div>
-        <div class="col">
-            <img src="~/Content/image/img-thumb.png" />
-        </div>
-        <div class="col">
-            <img src="~/Content/image/img-thumb.png" />
-        </div>
-    </div>
-
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-        <div class="col col-sm-2">
-        </div>
-        <div class="col-sm-auto" style="text-align: center;">
-            <button class="btn btn-outline-dark">View All</button>
-        </div>
-        <div class="col col-sm-2">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+            <div class="col col-sm-2">
+            </div>
+            <div class="col-sm-auto" style="text-align: center;">
+                <button class="btn btn-outline-dark" style="width: -webkit-fill-available;">View All</button>
+            </div>
+            <div class="col col-sm-2">
+            </div>
         </div>
     </div>
 </div>
 
-<div style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
+<div class="mainPanelDivH" style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
     <div class="container">
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+        <div class="row justify-content-md-center" style="">
             <div class="col col-sm-2">
             </div>
-            <div class="col-sm-auto">
-                <h2><b style="color: white;">Shop Categories</b></h2>
+            <div class="col-sm-auto mainPanelDiv">
+                <h2><b style="font-weight: bold; color: #ffffff;">Shop Categories</b></h2>
             </div>
             <div class="col col-sm-2">
             </div>
         </div>
 
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 mainPanelDiv">
             <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                </div>
             </div>
             <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                </div>
             </div>
             <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                </div>
             </div>
             <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                </div>
             </div>
             <div class="col">
-                <img src="~/Content/image/img-thumb.png" />
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+            <div class="col col-sm-2">
+            </div>
+            <div class="col-sm-auto" style="text-align: center;">
+                <button class="btn btn-outline-light" style="width: -webkit-fill-available;">View All</button>
+            </div>
+            <div class="col col-sm-2">
             </div>
         </div>
     </div>
