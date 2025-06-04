@@ -7,21 +7,9 @@
             white-space: nowrap;
         }
 
-        .section-padding {
-            padding: 25px 0px 25px 0px;
-        }
-
-        .title-padding {
-            padding: 0px 0px 15px 0px;
-        }
-
-        .btn-padding {
-            padding: 15px 0px 0px 0px;
-        }
-
-
         .mainPanelDiv {
-            margin-top: 2%;
+            margin-top: 1%;
+            margin-bottom: 2%;
         }
 
         .mainPanelDivH {
@@ -31,28 +19,34 @@
 
         category {
             text-decoration: none;
-            color: black;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+        }
+
+        .text-link {
+            color: #ffffff !important;
+            font-weight: 600 !important;
         }
 
         .link-arrow p {
             display: inline-block;
             transition: 0.1s ease-in;
+            color: #ffffff;
+            font-weight: 500;
         }
 
         .link-arrow:hover p {
             transform: translateX(50%);
+            color: #ffffff;
+            font-weight: 500;
         }
     </style>
 </head>
-<div class="section-padding mainPanelDivH" style="background-color: #ffffff;">
+<div class="section-padding" style="background-color: #ffffff;">
     <div class="container">
         <div class="row justify-content-md-center" style="">
-            <div class="col col-sm-2">
-            </div>
-            <div class="col-sm-auto mainPanelDiv">
-                <h2><b style="font-weight: bold;">Featured Products</b></h2>
-            </div>
-            <div class="col col-sm-2">
+            <div class="col-sm-auto">
+                <h1><b style="font-weight: bold;">Featured Products</b></h1>
             </div>
         </div>
 
@@ -60,66 +54,69 @@
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                    <label class="origPrice" style="text-decoration: line-through;">₱ 279.00</label>
-                    <label class="form-label" style="color: #ED1C24;">₱ 279.00</label>
+                    <div class="label-margin">
+                        <label class="form-label label-productname">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                        <label class="origPrice label-origproductprice">₱ 279.00</label>
+                        <label class="form-label label-productprice">₱ 279.00</label>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                    <label class="origPrice" style="display: none;">₱ 279.00</label>
-                    <label class="form-label">₱ 279.00</label>
+                    <div class="label-margin">
+                        <label class="form-label label-productname">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                        <label class="origPrice label-origproductprice">₱ 279.00</label>
+                        <label class="form-label label-productprice">₱ 279.00</label>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/sample-product.png" />
-                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                    <label class="origPrice" style="display: none;">₱ 279.00</label>
-                    <label class="form-label">₱ 279.00</label>
+                    <div class="label-margin">
+                        <label class="form-label label-productname">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                        <label class="origPrice label-origproductprice">₱ 279.00</label>
+                        <label class="form-label label-productprice">₱ 279.00</label>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                    <label class="origPrice" style="display: none;">₱ 279.00</label>
-                    <label class="form-label">₱ 279.00</label>
+                    <div class="label-margin">
+                        <label class="form-label label-productname">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                        <label class="origPrice label-origproductprice">₱ 279.00</label>
+                        <label class="form-label label-productprice">₱ 279.00</label>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/sample-product.png" />
-                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                    <label class="origPrice" style="display: none;">₱ 279.00</label>
-                    <label class="form-label">₱ 279.00</label>
+                    <div class="label-margin">
+                        <label class="form-label label-productname">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                        <label class="origPrice label-origproductprice">₱ 279.00</label>
+                        <label class="form-label label-productprice">₱ 279.00</label>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-            <div class="col col-sm-2">
-            </div>
-            <div class="btn-padding col-sm-auto" style="text-align: center;">
-                <button class="btn btn-outline-dark" style="width: -webkit-fill-available;">View All</button>
-            </div>
-            <div class="col col-sm-2">
+        <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+            <div class="col-sm-auto" style="text-align: center;">
+                <button class="btn btn-outline-dark btn-outline-osus" style="width: -webkit-fill-available;">View All</button>
             </div>
         </div>
+
     </div>
 </div>
 
-<div class="mainPanelDivH" style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
+<div class="section-padding" style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
     <div class="container">
         <div class="row justify-content-md-center" style="">
-            <div class="col col-sm-2">
-            </div>
-            <div class="col-sm-auto mainPanelDiv title-padding">
-                <h2><b style="font-weight: bold; color: #ffffff;">Shop Categories</b></h2>
-            </div>
-            <div class="col col-sm-2">
+            <div class="col-sm-auto">
+                <h1><b style="font-weight: bold; color: #ffffff;">Shop Categories</b></h1>
             </div>
         </div>
 
@@ -127,42 +124,90 @@
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Inks <p>&#10132;</p></a>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Needle/Cartridge <p>&#10132;</p></a>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/sample-product.png" />
-                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Stencils/Thermal <p>&#10132;</p></a>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/samp-prod2.png" />
-                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Soap / Cleansing / Foaming <p>&#10132;</p></a>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <img src="~/Content/image/sample-product.png" />
-                    <a href="" class="category link-arrow"> Link with an arrow. Hover over me please!<p>&#10132;</p></a>
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Film / Cover / Tape <p>&#10132;</p></a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-            <div class="col col-sm-2">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 mainPanelDiv">
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Glide / Ointment / Aftercare <p>&#10132;</p></a>
+                    </div>
+                </div>
             </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Printer <p>&#10132;</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Ink cups <p>&#10132;</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/samp-prod2.png" />
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Soap / Cleansing / Foaming <p>&#10132;</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <img src="~/Content/image/sample-product.png" />
+                    <div class="label-margin">
+                        <a href="" class="text-link category link-arrow">Film / Cover / Tape <p>&#10132;</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
             <div class="col-sm-auto" style="text-align: center;">
-                <button class="btn btn-outline-light" style="width: -webkit-fill-available;">View All</button>
-            </div>
-            <div class="col col-sm-2">
+                <button class="btn-outline-osus btn btn-outline-light" style="width: -webkit-fill-available;">View All</button>
             </div>
         </div>
     </div>
@@ -170,6 +215,11 @@
 
 <div style="background-color: #000002;">
     <img src="~/Content/image/new-arrival.png" />
+    @*<div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
+            <div class="col-sm-auto" style="text-align: center;">
+                <button class="btn-outline-osus btn btn-outline-light" style="width: -webkit-fill-available;">Shop NOW</button>
+            </div>
+        </div>*@
 </div>
 
 <div>
@@ -183,22 +233,21 @@
                                 <div class="card mx-1">
                                     <div class="card-img card-img-top">
                                         <div class="card-img-container">
-                                            <img alt="Slide 1" src="https://cdn.pixabay.com/photo/2020/09/26/07/05/sea-5603351_1280.jpg">
+                                            <img src="~/Content/image/team/team-2-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 1</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="carousel-item">
                             <div class="col-md-3">
                                 <div class="card mx-1">
                                     <div class="card-img">
                                         <div class="card-img-container">
-                                            <img alt="Slide 5" src="https://cdn.pixabay.com/photo/2020/06/15/17/35/me-nots-5302712_1280.jpg">
+                                            <img src="~/Content/image/team/team-3-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 5</div>
                                 </div>
                             </div>
                         </div>
@@ -207,10 +256,9 @@
                                 <div class="card mx-1">
                                     <div class="card-img card-img-top">
                                         <div class="card-img-container">
-                                            <img alt="Slide 2" src="https://cdn.pixabay.com/photo/2022/03/02/13/42/peace-7043225_1280.jpg">
+                                            <img src="~/Content/image/team/team-4-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 2</div>
                                 </div>
                             </div>
                         </div>
@@ -219,10 +267,9 @@
                                 <div class="card mx-1">
                                     <div class="card-img">
                                         <div class="card-img-container">
-                                            <img alt="Slide 3" src="https://cdn.pixabay.com/photo/2020/03/09/17/51/narcis-4916584_1280.jpg">
+                                            <img src="~/Content/image/team/team-5-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 3</div>
                                 </div>
                             </div>
                         </div>
@@ -231,10 +278,9 @@
                                 <div class="card mx-1">
                                     <div class="card-img">
                                         <div class="card-img-container">
-                                            <img alt="Slide 4" src="https://cdn.pixabay.com/photo/2022/03/04/15/14/river-7047522_1280.jpg">
+                                            <img src="~/Content/image/team/team-6-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 4</div>
                                 </div>
                             </div>
                         </div>
@@ -243,10 +289,97 @@
                                 <div class="card mx-1">
                                     <div class="card-img">
                                         <div class="card-img-container">
-                                            <img alt="Slide 5" src="https://cdn.pixabay.com/photo/2020/06/15/17/35/me-nots-5302712_1280.jpg">
+                                            <img src="~/Content/image/team/team-7-resized.jpg" />
                                         </div>
                                     </div>
-                                    <div class="card-img-overlay">Slide 5</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-8-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-9-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-10-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-11-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-12-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-13-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-14-resized.jpg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card mx-1">
+                                    <div class="card-img">
+                                        <div class="card-img-container">
+                                            <img src="~/Content/image/team/team-15-resized.jpg" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title | Osus Tattoo</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -12,6 +12,68 @@
     @RenderSection("scripts", required: false)
 
     <style>
+
+        /*Text and labels*/
+
+        .text-white-bold {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-lightgray {
+            color: #727070;
+        }
+
+        .text-red {
+            color: #ED1C24;
+        }
+
+        .label-margin {
+            margin-top: 8px;
+        }
+
+        .label-productname {
+            font-weight: 600;
+        }
+
+        .label-productprice {
+            font-weight: 600;
+            color: #ED1C24;
+            font-size: 16px;
+        }
+
+        .label-productprice-light {
+            font-weight: 600;
+            color: #FFF200;
+            font-size: 16px;
+        }
+
+        .label-origproductprice {
+            text-decoration: line-through;
+            color: #727070;
+        }
+
+        .label-origproductprice-white {
+            text-decoration: line-through;
+            color: #DED9D9;
+        }
+
+        .label-variation {
+            font-size: 12px;
+            color: #727070;
+        }
+
+        .product-cart-padding {
+            padding: 15px 0px 15px 0px;
+        }
+
+
+
+
         .navbar-nav > li {
             padding-left: 10px;
             padding-right: 10px;
@@ -39,11 +101,66 @@
             /*max-height: 500px;*/
             display: block;
         }
+
+        .header-margin {
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+
+        .section-padding {
+            padding: 25px 0px 25px 0px;
+        }
+
+        .btn-padding {
+            padding: 15px 0px 0px 0px;
+        }
+
+        .btn-outline-osus {
+            font-weight: 600;
+            font-size: 16px;
+            padding: 5px 25px 5px 25px;
+        }
+
+
+
+        /*Products*/
+
+        .variation {
+            background-color: #E1E1E1;
+            border: #E1E1E1;
+            border-style: solid;
+            border-width: thin;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+            padding: 10px 0px 10px 0px;
+        }
+
+            .variation label {
+                cursor: pointer;
+            }
+
+            .variation:hover {
+                background-color: #E1E1E1;
+                border: #ED1C24;
+                border-style: solid;
+                border-width: thin;
+                padding: 10px 0px 10px 0px;
+            }
+
+            .variation:disabled {
+                background-color: #E1E1E1;
+                color: #727070;
+            }
+
+        .spacing {
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body style="background-color: #000002;">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #000002;">
-        <div class="container" style="margin-top: 2%;">
+        <div class="container header-margin">
             <a href="@Url.Action("Index", "Home", new { })">
                 <img style="width: 50px;" src="~/Content/image/main-logo.svg" />
             </a>
@@ -73,22 +190,22 @@
 
     <div class="container" style="background-color: #000002;">
         <div class="row" style="margin-top: 3%;">
-            <div class="col-1"><img src="~/Content/image/osus-logo-footer.png" @*style="width: 100px;"*@ class="float-sm-end" /></div>
+            <div class="col-1"><img src="~/Content/image/osus-logo-footer.png" class="float-sm-end" /></div>
             <div class="col-5">
                 <b style="color: #ffffff;"><label class="form-label">About Us</label></b>
-                <p class="form-p">Driven by passion and precision, our team is dedicated to delivering the best tatoo supplies in the Philippines</p>
+                <p class="form-p text-lightgray">Driven by passion and precision, our team is dedicated to delivering the best tatoo supplies in the Philippines</p>
             </div>
             <div class="col-3">
                 <b style="color: #ffffff;"><label class="form-label">Quick Links</label></b>
-                <p class="form-p">Featured Products</p>
-                <p class="form-p">Best Sellers</p>
-                <p class="form-p">All Products</p>
+                <p class="form-p text-lightgray">Featured Products</p>
+                <p class="form-p text-lightgray">Best Sellers</p>
+                <p class="form-p text-lightgray">All Products</p>
             </div>
             <div class="col-3">
                 <b style="color: #ffffff;"><label class="form-label">Info</label></b>
-                <p class="form-p">Artists</p>
-                <p class="form-p">Events</p>
-                <p class="form-p">Contact Us</p>
+                <p class="form-p text-lightgray">Artists</p>
+                <p class="form-p text-lightgray">Events</p>
+                <p class="form-p text-lightgray">Contact Us</p>
             </div>
         </div>
     </div>
@@ -96,7 +213,7 @@
         <div class="container body-content">
             <hr style="background-color: #707272; height: 1px; border: 0;" />
             <footer>
-                <p>&copy; @DateTime.Now.Year - Osus Tattoo</p>
+                <p class="text-lightgray">&copy; @DateTime.Now.Year - Osus Tattoo</p>
             </footer>
         </div>
     </div>
