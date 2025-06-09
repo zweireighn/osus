@@ -6,6 +6,13 @@
 
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        .items:hover {
+            background: #e1e1e1;
+            border: 1px solid #d0d0d0;
+        }
+    </style>
 </head>
 
 <div style="background-color: #ffffff;">
@@ -83,33 +90,33 @@
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
                 @foreach (OsusTattoo.Models.ProductsModel product in Model.Products)
                 {
-                    <div class="col">
+                    <div class="col items" id="@product.Id">
                         <div class="mb-3">
                             <img src="~/Content/image/samp-prod2.png" />
                             <div class="label-margin">
                                 <label class="form-label label-productname">
                                     @string.Format("{0} - {1}",
-                               product.Name,
-                               product.ProductionVariationList
-                               .Where(x => x.MakePrimary)
-                               .FirstOrDefault().Variant)
-                            </label>
-                            <label class="origPrice label-origproductprice">
-                                @string.Format("₱ {0}",
-                                product.ProductionVariationList
-                                .Where(x => x.MakePrimary)
-                                .FirstOrDefault().Price)
-                            </label>
-                            <label class="form-label label-productprice">
-                                @string.Format("₱ {0}",
-                                product.ProductionVariationList
-                                .Where(x => x.MakePrimary)
-                                .FirstOrDefault().Price)
-                            </label>
+                                   product.Name,
+                                   product.ProductionVariationList
+                                   .Where(x => x.MakePrimary)
+                                   .FirstOrDefault().Variant)
+                                </label>
+                                <label class="origPrice label-origproductprice">
+                                    @string.Format("₱ {0}",
+                                    product.ProductionVariationList
+                                    .Where(x => x.MakePrimary)
+                                    .FirstOrDefault().Price)
+                                </label>
+                                <label class="form-label label-productprice">
+                                    @string.Format("₱ {0}",
+                                    product.ProductionVariationList
+                                    .Where(x => x.MakePrimary)
+                                    .FirstOrDefault().Price)
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
             </div>
         </div>
         @*End All Products*@
