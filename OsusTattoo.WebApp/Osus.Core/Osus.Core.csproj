@@ -42,14 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="OrderAddress.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductVariation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionReport.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserAddress.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

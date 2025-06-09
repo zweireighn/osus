@@ -41,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Osus.Core\Osus.Core.csproj">
+      <Project>{651A1F59-78D5-4A91-85EA-AB9F4831A2C8}</Project>
+      <Name>Osus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Osus.Data\Osus.Data.csproj">
+      <Project>{6DD6C0B4-7FD6-440E-9F93-E53795C79570}</Project>
+      <Name>Osus.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Osus.Core.Enums;
 
-namespace Osus.Core
+namespace OsusTattoo.WebApp.Models
 {
-    public class User
+    public class UserModel
     {
         public int Id { get; set; }
         public string Email { get; set; }

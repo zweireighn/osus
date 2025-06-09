@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -118,12 +121,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\MapperConfig.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllProductsViewModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +154,43 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\custom-css\custom-carousel.css" />
+    <Content Include="Content\image\banner.png" />
+    <Content Include="Content\image\img-thumb.png" />
+    <Content Include="Content\image\JT-Express-Logo.png" />
     <Content Include="Content\image\logo.png" />
+    <Content Include="Content\image\main-logo.svg" />
+    <Content Include="Content\image\new-arrival.png" />
+    <Content Include="Content\image\no-image.png" />
+    <Content Include="Content\image\osus-logo-footer.png" />
+    <Content Include="Content\image\products\needles\green-dragon\greendragon-1.jpg" />
+    <Content Include="Content\image\products\needles\green-dragon\greendragon-2.jpg" />
+    <Content Include="Content\image\products\needles\green-dragon\greendragon-3.jpg" />
+    <Content Include="Content\image\products\needles\green-dragon\greendragon-4.jpg" />
+    <Content Include="Content\image\products\needles\purple-dragon\purpledragon-1.jpg" />
+    <Content Include="Content\image\products\needles\purple-dragon\purpledragon-2.jpg" />
+    <Content Include="Content\image\products\needles\purple-dragon\purpledragon-3.jpg" />
+    <Content Include="Content\image\products\needles\purple-dragon\purpledragon-4.jpg" />
+    <Content Include="Content\image\products\needles\red-dragon\reddragon--2.jpg" />
+    <Content Include="Content\image\products\needles\red-dragon\reddragon-1.jpg" />
+    <Content Include="Content\image\products\needles\red-dragon\reddragon-3.jpg" />
+    <Content Include="Content\image\products\needles\red-dragon\reddragon-4.jpg" />
+    <Content Include="Content\image\samp-prod2.png" />
+    <Content Include="Content\image\sample-product.png" />
+    <Content Include="Content\image\team\team-1-resized.jpg" />
+    <Content Include="Content\image\team\team-10-resized.jpg" />
+    <Content Include="Content\image\team\team-11-resized.jpg" />
+    <Content Include="Content\image\team\team-12-resized.jpg" />
+    <Content Include="Content\image\team\team-13-resized.jpg" />
+    <Content Include="Content\image\team\team-14-resized.jpg" />
+    <Content Include="Content\image\team\team-15-resized.jpg" />
+    <Content Include="Content\image\team\team-2-resized.jpg" />
+    <Content Include="Content\image\team\team-3-resized.jpg" />
+    <Content Include="Content\image\team\team-4-resized.jpg" />
+    <Content Include="Content\image\team\team-5-resized.jpg" />
+    <Content Include="Content\image\team\team-6-resized.jpg" />
+    <Content Include="Content\image\team\team-7-resized.jpg" />
+    <Content Include="Content\image\team\team-8-resized.jpg" />
+    <Content Include="Content\image\team\team-9-resized.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -186,10 +231,12 @@
     <Content Include="Views\Products\ProductDetails.cshtml" />
     <Content Include="Views\Checkout\Checkout.cshtml" />
     <Content Include="Views\Products\Cart.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginLayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -217,6 +264,16 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Osus.Business\Osus.Business.csproj">
+      <Project>{D817A307-7849-47AE-B7A3-5D5F675CEB96}</Project>
+      <Name>Osus.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Osus.Core\Osus.Core.csproj">
+      <Project>{651A1F59-78D5-4A91-85EA-AB9F4831A2C8}</Project>
+      <Name>Osus.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

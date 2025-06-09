@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Osus.Core
 {
-    public class OrderAddress
+    public class UserAddress
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
-        
+        public string Address { get; set; }
+        public int UserId { get; set; }
     }
 }
