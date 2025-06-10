@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model OsusTattoo.Models.ProductsModel
+
 <head>
     <style>
         .carousel-indicators button.thumbnail {
@@ -51,6 +53,9 @@
                 <!-- Carousel wrapper (Limit Img Thumbnail to 5)-->
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
+
+                        @foreach (ProductsModel)
+
                         <div class="carousel-item active">
                             <img src="https://codingyaar.com/wp-content/uploads/bootstrap-carousel-slide-2.jpg" class="d-block w-100" alt="...">
                         </div>

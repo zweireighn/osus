@@ -21,5 +21,10 @@ namespace Osus.Business
         {
             return _productData.LoadProduct();
         }
+
+        public Product LoadProductByProductId(int productId)
+        {
+            return _productData.LoadProductbyProductId(productId);
+        }
     }
 }

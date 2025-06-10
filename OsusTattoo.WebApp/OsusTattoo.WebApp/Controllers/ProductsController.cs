@@ -25,18 +25,22 @@ namespace OsusTattoo.WebApp.Controllers
 
         public ActionResult AllProducts()
         {
-            List<Product> product = _productBusiness.LoadProduct();
+            List<Product> listProduct = _productBusiness.LoadProduct();
 
             AllProductsViewModel viewModel = new AllProductsViewModel();
 
-            viewModel.Products = mapper.Map<List<Product>, List<ProductsModel>>(product);
+            viewModel.Products = mapper.Map<List<Product>, List<ProductsModel>>(listProduct);
 
             return View(viewModel);
         }
 
-        public ActionResult ProductDetails()
+        public ActionResult ProductDetails(int id)
         {
-            return View();
+            Product product = _productBusiness.LoadProductByProductId(id);
+
+            ProductsModel productResult = mapper.Map<ProductsModel>(product);
+
+            return View(productResult);
         }
 
         public ActionResult Cart()

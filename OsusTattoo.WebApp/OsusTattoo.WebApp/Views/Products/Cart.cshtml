@@ -21,9 +21,9 @@
 
         input {
             height: 34px;
-            width: 100px;
+            width: 60px;
             text-align: center;
-            font-size: 26px;
+            font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 4px;
             display: inline-block;
@@ -36,120 +36,150 @@
     </style>
 </head>
 
-<div style="background-color: #ffffff;">
-    <div class="row justify-content-md-center" style="">
-        <div class="col col-sm-2">
+<div class="section-padding" style="background-color: #ffffff;">
+    <div class="container">
+        <div class="col-sm-12 section-padding">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Continue shopping</a></li>
+                </ol>
+            </nav>
         </div>
-        <div class="col-sm-auto" style="margin-top: 2%;">
-            <h2><b style="color: #000000;">Checkout</b></h2>
-        </div>
-        <div class="col col-sm-2">
-        </div>
-    </div>
-    <div class="row" style="width: 95%; margin: auto; margin-top: 2%;">
-        <div class="col-sm-12">
-            <table class="table table-responsive-sm" style="margin: auto;">
-                <thead>
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col"><label class="float-end">Total</label></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <div class="number">
-                                <span class="minus">-</span>
-                                <input type="text" value="1" />
-                                <span class="plus">+</span>
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <div class="number">
-                                <span class="minus">-</span>
-                                <input type="text" value="1" />
-                                <span class="plus">+</span>
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                <div class="col-6 col-sm-3">
-                                    <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                    <label class="origPrice form-label" style="text-decoration: line-through;">₱ 279.00</label>
-                                    <label class="form-label dcPrice" style="color: #ED1C24;">₱ 279.00</label>
-                                </div>
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <div class="number">
-                                <span class="minus">-</span>
-                                <input type="text" value="1" />
-                                <span class="plus">+</span>
 
-                            </div>
-                        </td>
-                        <td style="align-content: center;">
-                            <p class="tablePrice float-end fs-1">₱ 279.00</p>
-                        </td>
-                        <td style="align-content: center;">
-                            <span class="glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-auto">
+                <h1><b>Your cart</b></h1>
+            </div>
         </div>
-    </div>
-    <div class="bottomPart">
-        <div class="row">
-            <div class="col-4 col-sm-4"></div>
-            <div class="col-4 col-sm-4"><div class="float-end">Subtotal:</div></div>
-            <div class="col-4 col-sm-4">₱ 279.00</div>
 
-            <!-- Force next columns to break to new line at md breakpoint and up -->
-            <div class="w-100 d-none d-md-block"></div>
+        <div class="row" style="margin: auto;">
+            <div class="col-sm-12">
+                <table class="table table-responsive-sm" style="margin: auto;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col"><label class="float-end">Total</label></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row product-cart-padding">
+                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                    <div class="col-6 col-sm-3">
+                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
+                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
+                                        <br />
+                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <div class="number">
+                                    <span class="minus">-</span>
+                                    <input type="text" value="1" />
+                                    <span class="plus">+</span>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
+                            </td>
+                            <td style="align-content: center;">
+                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row product-cart-padding">
+                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                    <div class="col-6 col-sm-3">
+                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
+                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
+                                        <br />
+                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <div class="number">
+                                    <span class="minus">-</span>
+                                    <input type="text" value="1" />
+                                    <span class="plus">+</span>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
+                            </td>
+                            <td style="align-content: center;">
+                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row product-cart-padding">
+                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
+                                    <div class="col-6 col-sm-3">
+                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
+                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
+                                        <br />
+                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <div class="number">
+                                    <span class="minus">-</span>
+                                    <input type="text" value="1" />
+                                    <span class="plus">+</span>
 
-            <div class="col-4 col-sm-4"></div>
-            <div class="col-4 col-sm-4"></div>
-            <div class="col-4 col-sm-4"><button class="btn btn-dark" type="button" style="margin-left: -15%; margin-top: 2%; margin-bottom: 20%; width: inherit;">Buy Now</button></div>
+                                </div>
+                            </td>
+                            <td style="align-content: center;">
+                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
+                            </td>
+                            <td style="align-content: center;">
+                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bottomPart">
+            <div class="row section-padding">
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4"><div class="spacing float-start label-totalprice">Subtotal:</div><div class="spacing float-end label-totalprice">₱ 279.00</div></div>
+
+                <!-- Force next columns to break to new line at md breakpoint and up -->
+                <div class="w-100 d-none d-md-block"></div>
+
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4">
+                    <div class="d-grid gap-2">
+                        <label class="spacing label-variation float-end">Taxes, discounts, and shipping fees will be applied at checkout.</label>
+                    </div>
+                </div>
+
+                <!-- Force next columns to break to new line at md breakpoint and up -->
+                <div class="w-100 d-none d-md-block"></div>
+
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4"></div>
+                <div class="col-4 col-sm-4">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-dark btn-outline-osus" type="button">Checkout</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>

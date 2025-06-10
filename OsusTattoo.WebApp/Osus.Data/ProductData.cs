@@ -61,6 +61,46 @@ namespace Osus.Data
             return productList;
         }
 
+        private readonly string LoadProductbyProductId_Command = @"SELECT TOP (1) Id, Name, Category, DateCreation, ImagePath FROM [Product] where Id = @ProductId";
+
+        public Product LoadProductbyProductId(int productId)
+        {
+            Product productResult = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    SqlCommand command = new SqlCommand(LoadProduct_Command, connection);
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@ProductId", SqlDbType.NVarChar).Value = productId;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productResult = new Product
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Name = reader["Name"].ToString(),
+                                Category = (Core.Enums.Category)Convert.ToInt16(reader["Category"]),
+                                DateCreation = Convert.ToDateTime(reader["DateCreation"].ToString()),
+                                ImagePath = reader["ImagePath"].ToString(),
+                                ProductionVariationList = LoadProductVariantsByProductId(Convert.ToInt32(reader["Id"]))
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return productResult;
+        }
+
         private readonly string LoadProductVariantsByProductId_Command = @"SELECT Id ,Variant ,Quantity ,Price ,MakePrimary ,Discount ,ProductId FROM [ProductVariation] where ProductId = @ProductId";
 
         public List<ProductVariation> LoadProductVariantsByProductId(int productId)

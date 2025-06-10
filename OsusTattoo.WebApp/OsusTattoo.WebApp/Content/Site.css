@@ -16,5 +16,23 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /* max-width: 280px;*/
+    max-width: 100%;
+}
+
+
+
+.section-padding-small {
+    padding: 10px 0px 10px 0px;
+}
+
+
+
+/* Checkout */
+.paymentNote {
+    height: 200px
+}
+
+.form-custom {
+    font-size: 14px !important;
 }
