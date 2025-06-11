@@ -162,6 +162,10 @@
     <Content Include="Content\image\new-arrival.png" />
     <Content Include="Content\image\no-image.png" />
     <Content Include="Content\image\osus-logo-footer.png" />
+    <Content Include="Content\image\products\CartridgeNeedle\Red Dragon Cartridge %28Round Liner%29\reddragon--2.jpg" />
+    <Content Include="Content\image\products\CartridgeNeedle\Red Dragon Cartridge %28Round Liner%29\reddragon-1.jpg" />
+    <Content Include="Content\image\products\CartridgeNeedle\Red Dragon Cartridge %28Round Liner%29\reddragon-3.jpg" />
+    <Content Include="Content\image\products\CartridgeNeedle\Red Dragon Cartridge %28Round Liner%29\reddragon-4.jpg" />
     <Content Include="Content\image\products\needles\green-dragon\greendragon-1.jpg" />
     <Content Include="Content\image\products\needles\green-dragon\greendragon-2.jpg" />
     <Content Include="Content\image\products\needles\green-dragon\greendragon-3.jpg" />

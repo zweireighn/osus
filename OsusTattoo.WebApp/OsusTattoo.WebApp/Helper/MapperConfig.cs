@@ -19,6 +19,7 @@ namespace OsusTattoo.WebApp.Helper
                 cfg.CreateMap<RegisterViewModel, User>().ReverseMap();
                 cfg.CreateMap<AllProductsViewModel, Product>().ReverseMap();
                 cfg.CreateMap<ProductsModel, Product>().ReverseMap();
+                cfg.CreateMap<ProductDetailsModel, Product>().ReverseMap();
             });
 
             Mapper mapper = new Mapper(config);

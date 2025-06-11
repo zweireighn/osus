@@ -9,6 +9,9 @@ using Osus.Core;
 using OsusTattoo.Models;
 using OsusTattoo.WebApp.Helper;
 using AutoMapper.QueryableExtensions;
+using System.IO;
+using System.Configuration;
+using Microsoft.Ajax.Utilities;
 
 namespace OsusTattoo.WebApp.Controllers
 {
@@ -16,6 +19,7 @@ namespace OsusTattoo.WebApp.Controllers
     {
         ProductBusiness _productBusiness;
         Mapper mapper;
+        private readonly string _productRootFolder = ConfigurationManager.AppSettings["ImageRootFolder"];
 
         public ProductsController()
         {
@@ -38,7 +42,18 @@ namespace OsusTattoo.WebApp.Controllers
         {
             Product product = _productBusiness.LoadProductByProductId(id);
 
-            ProductsModel productResult = mapper.Map<ProductsModel>(product);
+            ProductDetailsModel productResult = mapper.Map<ProductDetailsModel>(product);
+
+            string dir = string.Format("{0}{1}", AppDomain.CurrentDomain.BaseDirectory, productResult.ImagePath) ;
+
+            string[] fileArray = Directory.GetFiles(dir);
+            List<string> fileName = new List<string>(); ;
+                
+            fileArray.ForEach(x => {
+                fileName.Add(Path.GetFileName(x));
+            });
+
+            productResult.ListOfImages = fileName;
 
             return View(productResult);
         }
