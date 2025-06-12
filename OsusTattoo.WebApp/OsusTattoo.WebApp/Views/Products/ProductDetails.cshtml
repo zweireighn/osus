@@ -86,14 +86,16 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-1">
-                            <h1 class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</h1>
+                            <h1 class="form-label" style="font-weight: bold;">@Model.Name - 
+                            <label id="prodVariant">@Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Variant</label>
+                            </h1>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-1">
-                            <label class="origPrice form-label label-origproductprice" font-size: x-large;">₱ 330.00</label>
+                            <label class="origPrice form-label label-origproductprice" font-size: x-large;">₱ @Convert.ToDecimal(Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Price)</label>
                             <label class="form-label dcPrice" style="color: #ED1C24; font-size: x-large;">₱ 279.00</label>
                         </div>
                     </div>
@@ -108,17 +110,35 @@
                     </div>
                 </div>
                 @*End HR*@
-
-                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
-                    @foreach (string img in Model.ListOfImages)
-                    {
-                        <div class="col">
-                            <div class="mb-3 variation">
-                                <label>1201RL 1BOX</label>
+                @{ 
+                    int tempCtr = 0;
+                    decimal numerator = Model.ProductionVariationList.Count;
+                    decimal denominator = 4;
+                }
+                @for (int i = 0; i < Model.ProductionVariationList.Count; i++)
+                {
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+                        @for (int j = tempCtr; j <= Model.ProductionVariationList.Count - 1; j++)
+                        {
+                            tempCtr = j;
+                            <div class="col">
+                                <div class="mb-3 variation prodVariationChoices">
+                                    <label data-price="@Model.ProductionVariationList.ToList()[tempCtr].Price" data-dc="@Model.ProductionVariationList.ToList()[tempCtr].Discount">@Model.ProductionVariationList.ToList()[tempCtr].Variant</label>
+                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
+
+                            if (i > 0)
+                            {
+                                if (i % 4 == 0)
+                                {
+                                    tempCtr = tempCtr + 1;
+                                    break;
+                                }
+                            }
+                            i++;
+                        }
+                    </div>
+                }
 
                 <br />
                 <br />
@@ -210,4 +230,8 @@
 
 <script type="text/javascript">
     $(".mainBanner").css("display", "none");
+
+    $(".prodVariationChoices").on("click", function () {
+        $("#prodVariant").text($(this).find("label").text());
+    });
 </script>
