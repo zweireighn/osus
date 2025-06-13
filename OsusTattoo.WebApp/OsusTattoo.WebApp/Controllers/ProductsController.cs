@@ -62,5 +62,14 @@ namespace OsusTattoo.WebApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult AddToCart(int productId)
+        {
+
+
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
     }
 }
