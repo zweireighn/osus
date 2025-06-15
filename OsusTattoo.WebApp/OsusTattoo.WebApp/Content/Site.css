@@ -27,6 +27,35 @@ textarea {
 }
 
 
+/*For banner with floating buttons*/
+.container-img {
+    position: relative;
+    width: 100%;
+}
+
+    .container-img .btn-float {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+.btn-float-left {
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.cta-left {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
 
 /* Checkout */
 .paymentNote {

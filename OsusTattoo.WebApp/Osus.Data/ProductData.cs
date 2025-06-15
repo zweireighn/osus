@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Osus.Core;
+using Osus.Core.Enums;
 
 namespace Osus.Data
 {
@@ -71,10 +72,10 @@ namespace Osus.Data
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    SqlCommand command = new SqlCommand(LoadProduct_Command, connection);
+                    SqlCommand command = new SqlCommand(LoadProductbyProductId_Command, connection);
                     connection.Open();
 
-                    command.Parameters.AddWithValue("@ProductId", SqlDbType.NVarChar).Value = productId;
+                    command.Parameters.AddWithValue("@ProductId", SqlDbType.Int).Value = productId;
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -144,6 +145,92 @@ namespace Osus.Data
 
             return productList;
         }
+
+        private readonly string LoadProductVariantsById_Command = @"SELECT Id ,Variant ,Quantity ,Price ,MakePrimary ,Discount ,ProductId FROM [ProductVariation] where Id = @Id";
+
+        public ProductVariation LoadProductVariantsById(int id)
+        {
+            ProductVariation productResult = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    SqlCommand command = new SqlCommand(LoadProductVariantsById_Command, connection);
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@Id", SqlDbType.NVarChar).Value = id;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productResult = new ProductVariation
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Variant = reader["Variant"].ToString(),
+                                Quantity = Convert.ToInt32(reader["Quantity"]),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                MakePrimary = Convert.ToBoolean(reader["MakePrimary"]),
+                                Discount = Convert.ToInt32(reader["Discount"]),
+                                ProductId = Convert.ToInt32(reader["ProductId"])
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return productResult;
+        }
+
+        private readonly string LoadProductVariantsByIds_Command = @"SELECT Id ,Variant ,Quantity ,Price ,MakePrimary ,Discount ,ProductId FROM [ProductVariation] where Id in ({0})";
+
+        public List<ProductVariation> LoadProductVariantsByIds(List<int> ids)
+        {
+            ProductVariation productResult = null;
+            List<ProductVariation> productList = new List<ProductVariation>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    SqlCommand command = new SqlCommand(string.Format(LoadProductVariantsByIds_Command, string.Join(",", ids)), connection);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productResult = new ProductVariation
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Variant = reader["Variant"].ToString(),
+                                Quantity = Convert.ToInt32(reader["Quantity"]),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                MakePrimary = Convert.ToBoolean(reader["MakePrimary"]),
+                                Discount = Convert.ToInt32(reader["Discount"]),
+                                ProductId = Convert.ToInt32(reader["ProductId"])
+                            };
+
+                            productList.Add(productResult);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return productList;
+        }
+        #endregion
+
+        #region Insert
         #endregion
     }
 }

@@ -16,10 +16,11 @@ namespace Osus.Core
         public decimal TotalAmount { get; set; }
         public DateTime CreationDateTime { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public DateTime DeliveredDate { get; set; }
-        public long TrackingNumber { get; set; }
-        public int UserId { get; set; }
-        public int ProductId { get; set; }
+        public DateTime? DeliveredDate { get; set; }
+        public long? TrackingNumber { get; set; }
+        public int? UserId { get; set; }
+        public int? ProductVariationId { get; set; }
+        public string SessionId { get; set; }
         public UserAddress UserAddress { get; set; }
     }
 }

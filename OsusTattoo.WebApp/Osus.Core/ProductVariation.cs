@@ -9,5 +9,7 @@
         public decimal Price { get; set; }
         public int Discount { get; set; }
         public bool MakePrimary { get; set; }
+        public int UserId { get; set; }
+        public string SessionId { get; set; }
     }
 }

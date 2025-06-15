@@ -8,8 +8,10 @@ namespace Osus.Core.Enums
 {
     public enum OrderStatus
     {
-        None = 0,
-        Ink = 1,
-        Needle = 2
+        AddedToCart = 0,
+        OrderReceived = 1,
+        Processing = 2,
+        Shipped = 3,
+        Delivered =4
     }
 }

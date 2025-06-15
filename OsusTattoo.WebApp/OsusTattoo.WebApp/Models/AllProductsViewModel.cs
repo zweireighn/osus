@@ -31,4 +31,23 @@ namespace OsusTattoo.Models
         public List<string> ListOfImages { get; set; }
         public ICollection<ProductVariation> ProductionVariationList { get; set; }
     }
+
+    public class CartProductsModel
+    {
+        public int Id { get; set; }
+        public string ImagePath { get; set; }
+        public int ProductId { get; set; }
+        public string Variant { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public int Discount { get; set; }
+        public int UserId { get; set; }
+        public string SessionId { get; set; }
+        public Product Product { get; set; }
+    }
+
+    public class CartModel 
+    {
+        public List<CartProductsModel> CartProducts { get; set; }
+    }
 }

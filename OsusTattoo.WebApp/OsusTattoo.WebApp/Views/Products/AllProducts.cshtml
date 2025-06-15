@@ -108,7 +108,7 @@
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
                 @foreach (OsusTattoo.Models.ProductsModel product in Model.Products)
                 {
-                    <a href="@Url.Action("ProductDetails", "Products", new { id = product.Id })">
+                    <a href="@Url.Action("ProductDetails", "Products", new { pId = product.Id })">
                         <div class="col items" id="@product.Id">
                             <div class="mb-3">
                                 <img src="~/Content/image/samp-prod2.png" />

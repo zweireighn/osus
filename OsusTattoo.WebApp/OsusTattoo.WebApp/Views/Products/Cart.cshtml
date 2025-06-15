@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model OsusTattoo.Models.CartModel
+
 <head>
     <style>
         span {
@@ -64,88 +66,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="row product-cart-padding">
-                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                    <div class="col-6 col-sm-3">
-                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
-                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
-                                        <br />
-                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <div class="number">
-                                    <span class="minus">-</span>
-                                    <input type="text" value="1" />
-                                    <span class="plus">+</span>
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
-                            </td>
-                            <td style="align-content: center;">
-                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row product-cart-padding">
-                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                    <div class="col-6 col-sm-3">
-                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
-                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
-                                        <br />
-                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <div class="number">
-                                    <span class="minus">-</span>
-                                    <input type="text" value="1" />
-                                    <span class="plus">+</span>
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
-                            </td>
-                            <td style="align-content: center;">
-                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row product-cart-padding">
-                                    <div class="col-6 col-sm-3"><img src="~/Content/image/samp-prod2.png" style="max-width:min-content;" /></div>
-                                    <div class="col-6 col-sm-3">
-                                        <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                        <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
-                                        <label class="form-label label-productprice dcPrice">₱ 279.00</label>
-                                        <br />
-                                        <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <div class="number">
-                                    <span class="minus">-</span>
-                                    <input type="text" value="1" />
-                                    <span class="plus">+</span>
 
-                                </div>
-                            </td>
-                            <td style="align-content: center;">
-                                <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
-                            </td>
-                            <td style="align-content: center;">
-                                <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
-                            </td>
-                        </tr>
+                        @foreach (OsusTattoo.Models.CartProductsModel item in Model.CartProducts)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="row product-cart-padding">
+                                        <div class="col-6 col-sm-3"><img src="@Href("~/" + item.ImagePath)" style="max-width:min-content;" /></div>
+                                        <div class="col-6 col-sm-3">
+                                            <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
+                                            <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
+                                            <label class="form-label label-productprice dcPrice">₱ 279.00</label>
+                                            <br />
+                                            <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="align-content: center;">
+                                    <div class="number">
+                                        <span class="minus">-</span>
+                                        <input type="text" value="1" />
+                                        <span class="plus">+</span>
+                                    </div>
+                                </td>
+                                <td style="align-content: center;">
+                                    <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
+                                </td>
+                                <td style="align-content: center;">
+                                    <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

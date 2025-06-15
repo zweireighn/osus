@@ -33,7 +33,7 @@ namespace OsusTattoo.WebApp.Controllers
         {
             User userInfo = _userBusiness.LoadUserByUserName(model.Email);
 
-            Session["UserInfo"] = string.Format("{0} {1}", userInfo.Firstname, userInfo.Lastname);
+            Session["UserInfo"] = userInfo;
 
             if (userInfo.Password != model.Password)
             {

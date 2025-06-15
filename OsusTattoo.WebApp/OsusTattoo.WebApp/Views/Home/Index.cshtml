@@ -105,7 +105,8 @@
 
         <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
             <div class="col-sm-auto" style="text-align: center;">
-                <button class="btn btn-outline-dark btn-outline-osus" style="width: -webkit-fill-available;">View All</button>
+                @Html.ActionLink("View All", "AllProducts", "Products", new { area = "" }, new { @class = "btn btn-outline-dark btn-outline-osus", @style = "width: -webkit-fill-available;" })
+                @*<button class="btn btn-outline-dark btn-outline-osus" style="width: -webkit-fill-available;">View All</button>*@
             </div>
         </div>
 
@@ -114,7 +115,7 @@
 
 <div class="section-padding" style="background: linear-gradient(355deg, rgba(81,12,15,1) 35%, rgba(143,10,16,1) 100%);">
     <div class="container">
-        <div class="row justify-content-md-center" style="">
+        <div class="row justify-content-md-center">
             <div class="col-sm-auto">
                 <h1><b style="font-weight: bold; color: #ffffff;">Shop Categories</b></h1>
             </div>
@@ -123,7 +124,7 @@
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 mainPanelDiv">
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-ink.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Inks <p>&#10132;</p></a>
                     </div>
@@ -131,7 +132,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-needle.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Needle/Cartridge <p>&#10132;</p></a>
                     </div>
@@ -139,7 +140,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/sample-product.png" />
+                    <img src="~/Content/image/category/category-stencil.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Stencils/Thermal <p>&#10132;</p></a>
                     </div>
@@ -147,7 +148,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-soap.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Soap / Cleansing / Foaming <p>&#10132;</p></a>
                     </div>
@@ -155,7 +156,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/sample-product.png" />
+                    <img src="~/Content/image/category/category-tape.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Film / Cover / Tape <p>&#10132;</p></a>
                     </div>
@@ -166,7 +167,7 @@
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 mainPanelDiv">
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-aftercare.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Glide / Ointment / Aftercare <p>&#10132;</p></a>
                     </div>
@@ -174,7 +175,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-printer.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Printer <p>&#10132;</p></a>
                     </div>
@@ -182,7 +183,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/sample-product.png" />
+                    <img src="~/Content/image/category/category-other.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Ink cups <p>&#10132;</p></a>
                     </div>
@@ -190,7 +191,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/samp-prod2.png" />
+                    <img src="~/Content/image/category/category-soap.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Soap / Cleansing / Foaming <p>&#10132;</p></a>
                     </div>
@@ -198,7 +199,7 @@
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <img src="~/Content/image/sample-product.png" />
+                    <img src="~/Content/image/category/category-tape.png" />
                     <div class="label-margin">
                         <a href="" class="text-link category link-arrow">Film / Cover / Tape <p>&#10132;</p></a>
                     </div>
@@ -207,22 +208,30 @@
         </div>
         <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
             <div class="col-sm-auto" style="text-align: center;">
-                <button class="btn-outline-osus btn btn-outline-light" style="width: -webkit-fill-available;">View All</button>
+                @*<button class="btn-outline-osus btn btn-outline-light-osus" style="width: -webkit-fill-available;">View All</button>*@
+                @Html.ActionLink("View All", "AllProducts", "Products", new { area = "" }, new { @class = "btn-outline-osus btn btn-outline-light-osus", @style = "width: -webkit-fill-available;" })
             </div>
         </div>
     </div>
 </div>
 
-<div style="background-color: #000002;">
-    <img src="~/Content/image/new-arrival.png" />
-    @*<div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 justify-content-md-center">
-            <div class="col-sm-auto" style="text-align: center;">
-                <button class="btn-outline-osus btn btn-outline-light" style="width: -webkit-fill-available;">Shop NOW</button>
-            </div>
-        </div>*@
+<div style="background-color:#000000;">
+    <div class="container-img">
+        <img src="~/Content/image/new-arrival.png" />
+        @*<button class="btn-float btn-yellow">Shop NOW</button>*@
+        @Html.ActionLink("Shop NOW", "AllProducts", "Products", new { area = "" }, new { @class = "btn-float btn-yellow" })
+    </div>
 </div>
 
-<div>
+<div class="section-padding" style="background-color:#fff;">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-sm-auto">
+                <h1><b style="font-weight: bold">Our team</b></h1>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid text-center my-3">
         <div class="row">
             <div class="row mx-auto my-auto justify-content-center">
@@ -418,19 +427,3 @@
         });
     });
 </script>
-
-@*<div class="row mb-lg-3 text-center">
-        <div class="col-12 themed-grid-col">
-            1 of 3
-        </div>
-    </div>
-    <div class="row mb-lg-3 text-center">
-        <div class="col-12 themed-grid-col">
-            1 of 3
-        </div>
-    </div>
-    <div class="row mb-lg-3 text-center">
-        <div class="col-12 themed-grid-col">
-            1 of 3
-        </div>
-    </div>*@

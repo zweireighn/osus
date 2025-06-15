@@ -26,5 +26,10 @@ namespace Osus.Business
         {
             return _productData.LoadProductbyProductId(productId);
         }
+
+        public ProductVariation LoadProductVariationById(int id)
+        {
+            return _productData.LoadProductVariantsById(id);
+        }
     }
 }

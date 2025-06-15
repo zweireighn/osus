@@ -33,6 +33,20 @@
         }
     </style>
 </head>
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong style="font-size: x-small;" class="me-auto">Alert!</strong>
+                <small class="text-muted"></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <label style="font-size: x-large">Already Added to Cart</label>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div style="background-color: #ffffff;">
     <div class="container">
@@ -123,7 +137,7 @@
                         {
                             tempCtr = j;
                             <div class="col">
-                                <div class="mb-3 variation prodVariationChoices">
+                                <div class="mb-3 variation prodVariationChoices" data-variantid="@Model.ProductionVariationList.ToList()[tempCtr].Id" @(Model.ProductionVariationList.ToList()[tempCtr].MakePrimary ? "data-primary=true" : "")>
                                     <label data-price="@Model.ProductionVariationList.ToList()[tempCtr].Price" data-dc="@Model.ProductionVariationList.ToList()[tempCtr].Discount">@Model.ProductionVariationList.ToList()[tempCtr].Variant</label>
                                 </div>
                             </div>
@@ -147,7 +161,7 @@
                     <div class="col">
                         <div class="mb-1">
                             <div class="d-grid gap-2 spacing">
-                                <button id="btnAddToCart" class="btn btn-outline-dark btn-outline-osus" type="button">Add to Cart</button>
+                                <button id="btnAddToCart" class="btn btn-outline-dark btn-outline-osus" type="button" onclick="checkIfItemExistInSameUser()">Add to Cart</button>
                             </div>
                             <div class="d-grid gap-2 spacing">
                                 <button class="btn btn-dark btn-outline-osus" type="button">Buy Now</button>
@@ -230,9 +244,16 @@
 </div>
 
 <script type="text/javascript">
+    let productsInCart = [];
     $(document).ready(function () {
         initPriceChange();
-        addToCart();
+
+        $(".prodVariationChoices").each(function () {
+            if (typeof $(this).attr("data-primary") !== "undefined") {
+                $(this).attr("data-focus", "true").css({ "background-color": "#E1E1E1", "border": "#ED1C24", "border-style": "solid", "border-width": "thin", "padding": "10px 0px 10px 0px" });
+                return false;
+            }
+        });
     });
 
     $(".mainBanner").css("display", "none");
@@ -272,28 +293,95 @@
             dc.text("₱ " + Number((orig.data("price") * orig.data("dc")) / 100).toFixed(2)).css({ "display": "" });
         }
     }
-
+    function getQueryStringValues(url) {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        const values = [];
+        for (const value of urlParams.values()) {
+            values.push(value);
+        }
+        return values;
+    }
     function addToCart() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pId = urlParams.get('pId');
+        let varId = 0;
+        $(".prodVariationChoices").each(function () {
+            if (typeof $(this).attr("data-focus") !== "undefined") {
+                varId = $(this).attr("data-variantid");
+                return false;
+            }
+        });
+
         let data = {
-            productId: 1
+            productId: pId,
+            variantId: varId
         };
 
-        $("#btnAddToCart").on("click", function () {
+        if (!productsInCart.includes(varId)) {
+            productsInCart.push(varId);
+
             $.ajax({
                 type: "POST",
                 url: "@Url.Action("AddToCart", "Products")",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
-            }).done(function () {
-                
+            }).done(function (result) {
+                let jsonRes = JSON.parse(result);
+                $("#cartItemsCount").text(jsonRes.ItemCount);
             })
             .fail(function () {
-                
+
             })
             .always(function () {
-                
+
             });
+        }
+    }
+
+    function checkIfItemExistInSameUser() {
+        let varId = 0;
+        $(".prodVariationChoices").each(function () {
+            if (typeof $(this).attr("data-focus") !== "undefined") {
+                varId = $(this).attr("data-variantid");
+                return false;
+            }
         });
+
+        let d = {
+            variantId: varId
+        };
+
+        $.ajax({
+        type: "POST",
+        url: "@Url.Action("CheckCartByVariantId", "Products")",
+        data: JSON.stringify(d),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+        }).done(function (result) {
+            if (result === "null")
+                addToCart();
+            else {
+                const toast = new bootstrap.Toast(toastLiveExample)
+
+                toast.show()
+            }
+        })
+        .fail(function () {
+
+        })
+        .always(function () {
+
+        });
+    }
+
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+
+            toast.show()
+        })
     }
 </script>
