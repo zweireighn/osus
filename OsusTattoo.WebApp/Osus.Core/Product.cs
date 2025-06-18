@@ -11,6 +11,7 @@ namespace Osus.Core
         public Category Category { get; set; }
         public DateTime DateCreation { get; set; }
         public string ImagePath { get; set; } 
+        public string PrimaryImage { get; set; }
         public ICollection<ProductVariation> ProductionVariationList { get; set; }
     }
 }

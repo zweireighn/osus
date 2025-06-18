@@ -34,6 +34,7 @@ namespace OsusTattoo.Models
 
     public class CartProductsModel
     {
+        public int OrderId { get; set; }
         public int Id { get; set; }
         public string ImagePath { get; set; }
         public int ProductId { get; set; }

@@ -37,7 +37,36 @@
         }
     </style>
 </head>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">Are you sure you want to delete this item? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete" onclick="deleteCartItem()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div style="max-height: 100%;" id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+        <div class="d-flex">
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
 
+@Html.Hidden("hiddenCartId")
+@Html.Hidden("hiddenPrice")
 <div class="section-padding" style="background-color: #ffffff;">
     <div class="container">
         <div class="col-sm-12 section-padding">
@@ -60,7 +89,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Product</th>
-                            <th scope="col">Quantity</th>
+                            <th style="width: 20%;" scope="col">Quantity</th>
                             <th scope="col"><label class="float-end">Total</label></th>
                             <th scope="col"></th>
                         </tr>
@@ -69,31 +98,58 @@
 
                         @foreach (OsusTattoo.Models.CartProductsModel item in Model.CartProducts)
                         {
-                            <tr>
+                            string price = string.Empty;
+                            string totalPrice = string.Empty;
+
+                            if (item.Discount > 0)
+                            {
+                                price = (((Convert.ToDecimal(item.Price) * Convert.ToDecimal(item.Discount)) / 100) / 10).ToString("0.00");
+
+                                totalPrice += Convert.ToDecimal(price);
+                            }
+                            else
+                            {
+                                price = item.Price.ToString("0.00");
+                                totalPrice += Convert.ToDecimal(price);
+                            }
+
+                            <tr id="rowid_@item.OrderId">
                                 <td>
                                     <div class="row product-cart-padding">
-                                        <div class="col-6 col-sm-3"><img src="@Href("~/" + item.ImagePath)" style="max-width:min-content;" /></div>
-                                        <div class="col-6 col-sm-3">
-                                            <label class="form-label" style="font-weight: bold;">Red Dragon Cartridge 1 Box (20 pcs)</label>
-                                            <label class="origPrice form-label label-origproductprice">₱ 330.00</label>
-                                            <label class="form-label label-productprice dcPrice">₱ 279.00</label>
-                                            <br />
-                                            <label class="form-label label-variation">Variation: 1201RL 1BOX</label>
+                                        <div class="col-4 col-sm-3">
+                                            <img src="@Href("~/" + item.Product.ImagePath)" style="max-width:min-content;" />
+                                        </div>
+                                        <div class="col-4 col-sm-3">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label class="form-label" style="font-weight: bold;">@item.Product.Name</label>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="prodOrigPrice origPrice form-label" data-price="@Convert.ToDecimal(item.Price)" data-dc="@Convert.ToDecimal(item.Discount)">₱ @price</label>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label label-variation">Variation: @item.Variant</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>
                                 <td style="align-content: center;">
-                                    <div class="number">
+                                    <div class="number" data-variantid="@item.Id" data-price="@price">
                                         <span class="minus">-</span>
                                         <input type="text" value="1" />
                                         <span class="plus">+</span>
                                     </div>
                                 </td>
                                 <td style="align-content: center;">
-                                    <p class="tablePrice float-end label-cartprice">₱ 279.00</p>
+                                    <label style="white-space: nowrap;" class="rowTotalPrice_@item.Id float-end label-cartprice">₱ <label class="priceLabel_@item.Id">@price</label></label>
                                 </td>
                                 <td style="align-content: center;">
-                                    <span class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true"></span>
+                                    <button style="padding: 0; border: none; background: none;" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="$('#hiddenCartId').val(@item.OrderId); $('#hiddenPrice').val(@item.Price)">
+                                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                                              data-bs-custom-class="custom-tooltip"
+                                              data-bs-title="Remove Item" class="text-red glyphicon glyphicon-trash float-end" aria-hidden="true" data-cartid="@item.OrderId"></span>
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -106,7 +162,7 @@
             <div class="row section-padding">
                 <div class="col-4 col-sm-4"></div>
                 <div class="col-4 col-sm-4"></div>
-                <div class="col-4 col-sm-4"><div class="spacing float-start label-totalprice">Subtotal:</div><div class="spacing float-end label-totalprice">₱ 279.00</div></div>
+                <div class="col-4 col-sm-4"><div class="spacing float-start label-totalprice">Subtotal:</div><div id="sumOfTotalPrice" class="spacing float-end label-totalprice"></div></div>
 
                 <!-- Force next columns to break to new line at md breakpoint and up -->
                 <div class="w-100 d-none d-md-block"></div>
@@ -137,23 +193,109 @@
 
 <script type="text/javascript">
     $(".mainBanner").css("display", "none");
+    let sum = 0;
 
+    const toastLiveExample = document.getElementById('liveToast');
     $(document).ready(function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        plusMinusFunction();
+        getSubTotal();
+
+        $("#sumOfTotalPrice").text("₱ " + sum);
+    });
+
+    function getSubTotal() {
+        $(".number").each(function () {
+            sum += Number($(this).data("price"));
+        });
+    }
+
+    function plusMinusFunction() {
         $('.minus').click(function () {
             var $input = $(this).parent().find('input');
             var count = parseInt($input.val()) - 1;
             count = count < 1 ? 1 : count;
             $input.val(count);
             $input.change();
+
+            let totalPriceEl = $(".priceLabel_" + $(this).parent().data("variantid"));
+
+            let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
+            totalPriceEl.text(priceChange);
+
+            let tempSum = sum= Number(sum - Number($(this).parent().data("price"))).toFixed(2);//sum - Number($(this).parent().data("price"));
+
+            $("#sumOfTotalPrice").text("₱ " + tempSum);
+
             return false;
         });
         $('.plus').click(function () {
             var $input = $(this).parent().find('input');
             $input.val(parseInt($input.val()) + 1);
             $input.change();
+            let totalPriceEl = $(".priceLabel_" + $(this).parent().data("variantid"));
+
+            let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
+            totalPriceEl.text(priceChange);
+
+            let tempSum = sum = Number(sum + Number($(this).parent().data("price"))).toFixed(2);
+
+            $("#sumOfTotalPrice").text("₱ " + tempSum);
+
             return false;
         });
-    });
+    }
+
+    function initPriceChange() {
+        $(".prodOrigPrice").each(function () {
+            let orig = $(this);
+            let dc = $(this).siblings(".prodDCPrice");
+
+            if (Number(orig.data("dc")) <= 0) {
+                orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "none", "color": "#000000", "font-size": "x-large" });
+                dc.css({ "display": "none" });
+            } else {
+                orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "line-through", "color": "#727070", "font-size": "x-large" });
+                dc.text("₱ " + Number((orig.data("price") * orig.data("dc")) / 100).toFixed(2)).css({ "display": "" });
+            }
+        });
+    }
+
+    function deleteCartItem(obj) {
+
+        let el = $(obj);
+        let data = {
+            cartId: $("#hiddenCartId").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteCartItem", "Products")",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function (result) {
+            let jsonRes = JSON.parse(result);
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            if (jsonRes) {
+                toastBootstrap.show();
+                $("#rowid_" + $("#hiddenCartId").val()).remove();
+            } else {
+                alert("Unable to Delete");
+            }
+
+            $('#deleteModal').modal("toggle");
+        })
+        .fail(function () {
+
+        })
+        .always(function () {
+
+        });
+    }
 </script>
 
 

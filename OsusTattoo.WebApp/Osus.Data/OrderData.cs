@@ -214,5 +214,37 @@ namespace Osus.Data
             return isSuccess;
         }
         #endregion
+
+        #region Delete
+        private readonly string DeleteOrderByOrderId_Command = @"DELETE FROM [Order] where Id = @Id";
+
+        public bool DeleteOrderByOrderId(int orderId)
+        {
+            bool isSuccess = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string command = DeleteOrderByOrderId_Command;
+                    using (SqlCommand cmd = new SqlCommand(command, connection))
+                    {
+                        cmd.Parameters.Add("@Id", SqlDbType.Int).Value = orderId;
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                isSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                isSuccess = false;
+            }
+
+            return isSuccess;
+        }
+        #endregion
     }
 }

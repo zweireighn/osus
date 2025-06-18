@@ -110,7 +110,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-1">
-                            <label id="prodOrigPrice" class="origPrice form-label label-origproductprice" style="font-size: x-large;" data-price="@Convert.ToDecimal(Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Price)" data-dc="@Convert.ToDecimal(Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Discount)"></label>
+                            <label id="prodOrigPrice" class="origPrice form-label label-origproductprice" style="font-size: x-large;" data-price="@Convert.ToDecimal(Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Price /100)" data-dc="@Convert.ToDecimal(Model.ProductionVariationList.Where(x => x.MakePrimary).FirstOrDefault().Discount)"></label>
                             <label id="prodDCPrice" class="form-label dcPrice" style="color: #ED1C24; font-size: x-large;"></label>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                             tempCtr = j;
                             <div class="col">
                                 <div class="mb-3 variation prodVariationChoices" data-variantid="@Model.ProductionVariationList.ToList()[tempCtr].Id" @(Model.ProductionVariationList.ToList()[tempCtr].MakePrimary ? "data-primary=true" : "")>
-                                    <label data-price="@Model.ProductionVariationList.ToList()[tempCtr].Price" data-dc="@Model.ProductionVariationList.ToList()[tempCtr].Discount">@Model.ProductionVariationList.ToList()[tempCtr].Variant</label>
+                                    <label data-price="@(Model.ProductionVariationList.ToList()[tempCtr].Price / 100)" data-dc="@Model.ProductionVariationList.ToList()[tempCtr].Discount">@Model.ProductionVariationList.ToList()[tempCtr].Variant</label>
                                 </div>
                             </div>
 
@@ -245,6 +245,7 @@
 
 <script type="text/javascript">
     let productsInCart = [];
+    const toastLiveExample = document.getElementById('liveToast');
     $(document).ready(function () {
         initPriceChange();
 
@@ -262,29 +263,30 @@
         $(".prodVariationChoices").removeAttr("data-focus style");
         $(this).attr("data-focus", "true").css({ "background-color": "#E1E1E1", "border": "#ED1C24", "border-style": "solid", "border-width": "thin", "padding": "10px 0px 10px 0px" });
         $("#prodVariant").text($(this).find("label").text());
+        $("#prodOrigPrice").attr("data-price", $(this).find("label").data("price")).attr("data-dc", $(this).find("label").data("dc"));
         priceChanges($(this).find("label"));
     });
 
     function priceChanges(obj) {
-        let origPrice = $(obj).data("price");
-        let dcPrice = $(obj).data("dc");
-
         let origPriceEl = $("#prodOrigPrice");
         let dcPriceEl = $("#prodDCPrice");
+
+        let origPrice = $(obj).data("price");
+        let dcPrice = $(obj).data("dc");
 
         if (Number($(obj).data("dc")) <= 0) {
             origPriceEl.text("₱ " + Number(origPrice).toFixed(2)).css({ "text-decoration": "none", "color": "#000000", "font-size": "x-large" });
             dcPriceEl.css({ "display": "none" });
         } else {
             origPriceEl.text("₱ " + Number(origPrice).toFixed(2)).css({ "text-decoration": "line-through", "color": "#727070", "font-size": "x-large" });
-            dcPriceEl.text("₱ " + (Number((origPrice * dcPrice) / 100)).toFixed(2)).css({ "display": "" });
+            dcPriceEl.text("₱ " + (Number(origPrice).toFixed(2) - Number((origPrice * dcPrice) / 100)).toFixed(2)).css({ "display": "" });
         }
     }
 
     function initPriceChange() {
         let orig = $("#prodOrigPrice");
         let dc = $("#prodDCPrice");
-
+        console.log(orig.data("price"))
         if (Number(orig.data("dc")) <= 0) {
             orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "none", "color": "#000000", "font-size": "x-large" });
             dc.css({ "display": "none" });
@@ -293,6 +295,7 @@
             dc.text("₱ " + Number((orig.data("price") * orig.data("dc")) / 100).toFixed(2)).css({ "display": "" });
         }
     }
+
     function getQueryStringValues(url) {
         const urlParams = new URLSearchParams(new URL(url).search);
         const values = [];
@@ -373,15 +376,5 @@
         .always(function () {
 
         });
-    }
-
-    const toastTrigger = document.getElementById('liveToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
-    if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample)
-
-            toast.show()
-        })
     }
 </script>

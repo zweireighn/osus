@@ -48,7 +48,7 @@ namespace OsusTattoo.WebApp.Controllers
 
             ProductDetailsModel productResult = mapper.Map<ProductDetailsModel>(product);
 
-            string dir = string.Format("{0}{1}", AppDomain.CurrentDomain.BaseDirectory, productResult.ImagePath) ;
+            string dir = string.Format("{0}{1}", AppDomain.CurrentDomain.BaseDirectory, productResult.ImagePath);
 
             string[] fileArray = Directory.GetFiles(dir);
             List<string> fileName = new List<string>();
@@ -64,10 +64,30 @@ namespace OsusTattoo.WebApp.Controllers
 
         public ActionResult Cart()
         {
+            List<Order> order = _orderBusiness.LoadOrderBySessionId(Convert.ToString(Session["UserSessionId"]));
+            List<ProductVariation> productVariation = _productBusiness.LoadProductVariationByIds(order.Select(x => x.ProductVariationId.Value).ToList());
 
+            CartModel cartResult = new CartModel();
+            cartResult.CartProducts = mapper.Map<List<ProductVariation>, List<CartProductsModel>>(productVariation);
 
+            cartResult.CartProducts.ForEach(x =>
+            {
+                x.Product = _productBusiness.LoadProductByProductId(x.ProductId);
 
-            return View();
+                string dir = string.Format("{0}{1}", AppDomain.CurrentDomain.BaseDirectory, x.Product.ImagePath);
+
+                string[] fileArray = Directory.GetFiles(dir);
+
+                foreach (string file in fileArray)
+                {
+                    if (x.Product.PrimaryImage == Path.GetFileNameWithoutExtension(file))
+                        x.Product.ImagePath = x.Product.ImagePath + "\\" + Path.GetFileName(file);
+                }
+
+                x.OrderId = order.Where(o => o.ProductVariationId == x.Id).FirstOrDefault().Id;
+            });
+
+            return View(cartResult);
         }
 
         [HttpPost]
@@ -101,6 +121,15 @@ namespace OsusTattoo.WebApp.Controllers
             var jsonOrder = JsonConvert.SerializeObject(order);
 
             return Json(jsonOrder, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult DeleteCartItem(int cartId)
+        {
+            bool isSuccess = _orderBusiness.DeleteOrderByOrderId(cartId);
+
+            return Json(isSuccess, JsonRequestBehavior.AllowGet);
         }
     }
 }

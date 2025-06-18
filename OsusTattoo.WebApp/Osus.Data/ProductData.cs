@@ -21,7 +21,7 @@ namespace Osus.Data
         }
 
         #region Load
-        private readonly string LoadProduct_Command = @"SELECT TOP (15) Id, Name, Category, DateCreation, ImagePath FROM [Product] order by DateCreation desc";
+        private readonly string LoadProduct_Command = @"SELECT TOP (15) Id, Name, Category, DateCreation, ImagePath, PrimaryImage FROM [Product] order by DateCreation desc";
 
         public List<Product> LoadProduct()
         {
@@ -46,6 +46,7 @@ namespace Osus.Data
                                 Category = (Core.Enums.Category)Convert.ToInt16(reader["Category"]),
                                 DateCreation = Convert.ToDateTime(reader["DateCreation"].ToString()),
                                 ImagePath = reader["ImagePath"].ToString(),
+                                PrimaryImage = reader["PrimaryImage"].ToString(),
                                 ProductionVariationList = LoadProductVariantsByProductId(Convert.ToInt32(reader["Id"]))
                             };
 
@@ -62,7 +63,7 @@ namespace Osus.Data
             return productList;
         }
 
-        private readonly string LoadProductbyProductId_Command = @"SELECT TOP (1) Id, Name, Category, DateCreation, ImagePath FROM [Product] where Id = @ProductId";
+        private readonly string LoadProductbyProductId_Command = @"SELECT TOP (1) Id, Name, Category, DateCreation, ImagePath, PrimaryImage FROM [Product] where Id = @ProductId";
 
         public Product LoadProductbyProductId(int productId)
         {
@@ -88,6 +89,7 @@ namespace Osus.Data
                                 Category = (Core.Enums.Category)Convert.ToInt16(reader["Category"]),
                                 DateCreation = Convert.ToDateTime(reader["DateCreation"].ToString()),
                                 ImagePath = reader["ImagePath"].ToString(),
+                                PrimaryImage = reader["PrimaryImage"].ToString(),
                                 ProductionVariationList = LoadProductVariantsByProductId(Convert.ToInt32(reader["Id"]))
                             };
                         }

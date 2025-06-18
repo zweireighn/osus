@@ -26,5 +26,15 @@ namespace Osus.Business
         {
             return _orderData.AddToCartOrderInsert(productVariation);
         }
+
+        public List<Order> LoadOrderBySessionId(string sessionId)
+        {
+            return _orderData.LoadOrderBySessionId(sessionId);
+        }
+
+        public bool DeleteOrderByOrderId(int orderId)
+        {
+            return _orderData.DeleteOrderByOrderId(orderId);
+        }
     }
 }
