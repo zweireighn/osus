@@ -12,6 +12,7 @@
     @RenderSection("scripts", required: false)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <script>
         let itemCount = @(Convert.ToInt32(Session["ItemCount"]));
     </script>
@@ -209,7 +210,28 @@
         }
     </style>
 </head>
+@*<div id="toast">
+    <div id="img">
+        <img src="~/Content/image/logo.png" />
+    </div>
+    <div id="desc"></div>
+</div>*@
+
 <body style="background-color: #000002;">
+    <div class="toast ">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+
+        <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
+        <div class="progress active"></div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #000002;">
         <div class="container header-margin">
             <a href="@Url.Action("Index", "Home", new { })">
@@ -289,11 +311,45 @@
             <hr style="background-color: #707272; height: 1px; border: 0;" />
             <footer>
                 <p class="text-lightgray">&copy; @DateTime.Now.Year - Osus Tattoo</p>
+                <button id="testBtn">Show Toast</button>
             </footer>
         </div>
     </div>
+    
 </body>
 </html>
 <script type="text/javascript">
     $("#cartItemsCount").text(@(Convert.ToInt32(Session["ItemCount"])));
+
+    const toast = document.querySelector(".toast");
+
+    const progress = document.querySelector(".progress");
+
+    let timer1, timer2;
+    function showToast() {
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, 5000); //1s = 1000 milliseconds
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        }, 5300);
+    }
+
+    const closeIcon = document.querySelector(".close");
+
+    closeIcon.addEventListener("click", () => {
+        toast.classList.remove("active");
+
+        setTimeout(() => {
+            progress.classList.remove("active");
+        }, 300);
+
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+    });
+
 </script>

@@ -31,22 +31,10 @@
                 margin: 0 auto;
             }
         }
+
+
     </style>
 </head>
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
-    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong style="font-size: x-small;" class="me-auto">Alert!</strong>
-                <small class="text-muted"></small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <label style="font-size: x-large">Already Added to Cart</label>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div style="background-color: #ffffff;">
     <div class="container">
@@ -58,7 +46,6 @@
                     <li class="breadcrumb-item active" aria-current="page">Red Dragon Cartridge</li>
                 </ol>
             </nav>
-
         </div>
 
         <div class="row" style="width: 100%; margin: auto;">
@@ -245,7 +232,6 @@
 
 <script type="text/javascript">
     let productsInCart = [];
-    const toastLiveExample = document.getElementById('liveToast');
     $(document).ready(function () {
         initPriceChange();
 
@@ -286,13 +272,13 @@
     function initPriceChange() {
         let orig = $("#prodOrigPrice");
         let dc = $("#prodDCPrice");
-        console.log(orig.data("price"))
+        
         if (Number(orig.data("dc")) <= 0) {
             orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "none", "color": "#000000", "font-size": "x-large" });
             dc.css({ "display": "none" });
         } else {
             orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "line-through", "color": "#727070", "font-size": "x-large" });
-            dc.text("₱ " + Number((orig.data("price") * orig.data("dc")) / 100).toFixed(2)).css({ "display": "" });
+            dc.text("₱ " + (Number(orig.data("price")).toFixed(2) - Number((orig.data("price") * orig.data("dc")) / 100).toFixed(2))).css({ "display": "" });
         }
     }
 
@@ -304,6 +290,7 @@
         }
         return values;
     }
+
     function addToCart() {
         const urlParams = new URLSearchParams(window.location.search);
         const pId = urlParams.get('pId');
@@ -362,12 +349,11 @@
         contentType: "application/json; charset=utf-8",
         dataType: "json"
         }).done(function (result) {
-            if (result === "null")
+            if (result === "null") {
                 addToCart();
-            else {
-                const toast = new bootstrap.Toast(toastLiveExample)
-
-                toast.show()
+                showToast("Added to Cart", "success");
+            } else {
+                showToast("Already added to Cart", "error");
             }
         })
         .fail(function () {
@@ -377,4 +363,6 @@
 
         });
     }
+
+    
 </script>

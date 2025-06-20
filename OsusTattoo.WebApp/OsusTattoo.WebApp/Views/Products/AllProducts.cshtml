@@ -13,10 +13,10 @@
             border: 1px solid #d0d0d0;
         }
 
-        .items:hover .label-productname {
-            overflow: visible;
-            white-space: unset;
-        }
+            .items:hover .label-productname {
+                overflow: visible;
+                white-space: unset;
+            }
 
         .label-productname {
             color: #000000;
@@ -30,6 +30,64 @@
             text-align: left;
             padding: 10px;
         }
+
+        .box {
+            position: relative;
+        }
+
+        .dis-ribbon {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            z-index: 1;
+            overflow: hidden;
+            width: 75px;
+            height: 75px;
+            text-align: right;
+        }
+
+            .dis-ribbon span {
+                font-size: 10px;
+                font-weight: bold;
+                color: #FFF;
+                text-transform: uppercase;
+                text-align: center;
+                line-height: 20px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                width: 100px;
+                display: block;
+                background: #79A70A;
+                background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+                box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+                position: absolute;
+                top: 19px;
+                right: -21px;
+            }
+
+                .dis-ribbon span::before {
+                    content: "";
+                    position: absolute;
+                    left: 0px;
+                    top: 100%;
+                    z-index: -1;
+                    border-left: 3px solid #79A70A;
+                    border-right: 3px solid transparent;
+                    border-bottom: 3px solid transparent;
+                    border-top: 3px solid #79A70A;
+                }
+
+                .dis-ribbon span::after {
+                    content: "";
+                    position: absolute;
+                    right: 0px;
+                    top: 100%;
+                    z-index: -1;
+                    border-left: 3px solid transparent;
+                    border-right: 3px solid #79A70A;
+                    border-bottom: 3px solid transparent;
+                    border-top: 3px solid #79A70A;
+                }
     </style>
 </head>
 
@@ -109,29 +167,61 @@
                 @foreach (OsusTattoo.Models.ProductsModel product in Model.Products)
                 {
                     <a href="@Url.Action("ProductDetails", "Products", new { pId = product.Id })">
-                        <div class="col items" id="@product.Id">
-                            <div class="mb-3">
-                                <img src="~/Content/image/samp-prod2.png" />
-                                <div class="label-margin productItem">
-                                    <label class="form-label label-productname">
-                                        @string.Format("{0} - {1}",
-                                       product.Name,
-                                       product.ProductionVariationList
-                                       .Where(x => x.MakePrimary)
-                                       .FirstOrDefault().Variant)
-                                    </label>
-                                    <label class="origPrice label-origproductprice">
-                                        @string.Format("₱ {0}",
-                                        product.ProductionVariationList
-                                        .Where(x => x.MakePrimary)
-                                        .FirstOrDefault().Price)
-                                    </label>
-                                    <label class="form-label label-productprice">
-                                        @string.Format("₱ {0}",
-                                        product.ProductionVariationList
-                                        .Where(x => x.MakePrimary)
-                                        .FirstOrDefault().Price)
-                                    </label>
+                        <div class="box">
+                            @if (product.ProductionVariationList
+                                .Where(x => x.MakePrimary)
+                                .FirstOrDefault().Discount > 0)
+                            {
+                                <div class="dis-ribbon">
+                                    <span>
+                                        @(product.ProductionVariationList
+                                    .Where(x => x.MakePrimary)
+                                    .FirstOrDefault().Discount) % Off
+                                </span>
+                            </div>
+                        }
+                            <div class="col items" id="@product.Id">
+                                <div class="mb-3">
+                                    <img src="~/Content/image/samp-prod2.png" />
+                                    <div class="label-margin productItem">
+                                        <label class="form-label label-productname">
+                                            @string.Format("{0} - {1}",
+                                           product.Name,
+                                           product.ProductionVariationList
+                                           .Where(x => x.MakePrimary)
+                                           .FirstOrDefault().Variant)
+                                        </label>
+                                        @if (product.ProductionVariationList
+                                            .Where(x => x.MakePrimary)
+                                            .FirstOrDefault().Discount > 0)
+                                        {
+                                            <label class="origPrice label-origproductprice" style="font-weight: bold; font-size: x-large;">
+                                                @string.Format("₱ {0}",
+                                                     (product.ProductionVariationList
+                                                     .Where(x => x.MakePrimary)
+                                                     .FirstOrDefault().Price / 100).ToString("0.00"))
+                                            </label>
+                                            <label class="form-label label-productprice" style="font-weight: bold; font-size: x-large;">
+                                                @string.Format("₱ {0}",
+                                                Convert.ToDecimal(product.ProductionVariationList
+                                                .Where(x => x.MakePrimary)
+                                                .FirstOrDefault().Price - (product.ProductionVariationList
+                                                .Where(x => x.MakePrimary)
+                                                .FirstOrDefault().Price / 100) * product.ProductionVariationList
+                                            .Where(x => x.MakePrimary)
+                                            .FirstOrDefault().Discount) / 100)
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label class="origPrice" style="color: #000000; font-weight: bold; font-size: x-large;">
+                                                @string.Format("₱ {0}",
+                                                     (product.ProductionVariationList
+                                                     .Where(x => x.MakePrimary)
+                                                     .FirstOrDefault().Price / 100).ToString("0.00"))
+                                            </label>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>

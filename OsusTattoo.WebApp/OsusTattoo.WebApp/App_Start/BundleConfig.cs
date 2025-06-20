@@ -26,6 +26,7 @@ namespace OsusTattoo.WebApp
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-glyphicons.css",
                       "~/Content/custom-css/custom-carousel.css",
+                      "~/Content/custom-css/custom-toast.css",
                       "~/Content/site.css"));
         }
     }
