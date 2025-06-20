@@ -220,7 +220,7 @@
 <body style="background-color: #000002;">
     <div class="toast ">
         <div class="toast-content">
-            <i class="fas fa-solid fa-check check"></i>
+            <i id="icontype" class=""></i>
 
             <div class="message">
                 <span class="text text-1">Success</span>
@@ -325,9 +325,18 @@
     const progress = document.querySelector(".progress");
 
     let timer1, timer2;
-    function showToast() {
-        toast.classList.add("active");
-        progress.classList.add("active");
+    function showToast(type) {
+        $("#icontype").removeClass();
+        progress.classList.remove("error", "success");
+        if (type === 'success') {
+            $("#icontype").addClass("fas fa-solid fa-check check");
+            toast.classList.add("active", "check");
+            progress.classList.add("active", "success");
+        } else {
+            $("#icontype").addClass("fas fa-solid fa-times cross");
+            toast.classList.add("active", "cross");
+            progress.classList.add("active", "error");
+        }
 
         timer1 = setTimeout(() => {
             toast.classList.remove("active");

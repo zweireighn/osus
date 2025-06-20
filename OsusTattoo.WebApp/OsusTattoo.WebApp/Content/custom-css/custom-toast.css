@@ -41,6 +41,18 @@
     border-radius: 50%;
 }
 
+.toast-content .cross {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    min-width: 35px;
+    background-color: #f24d4c;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
 .toast-content .message {
     display: flex;
     flex-direction: column;
@@ -87,6 +99,26 @@
         height: 100%;
         width: 100%;
         background-color: #0D9B16;
+    }
+
+.toast .success:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #0D9B16;
+}
+
+    .toast .error:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #f24d4c;
     }
 
 .progress.active:before {
