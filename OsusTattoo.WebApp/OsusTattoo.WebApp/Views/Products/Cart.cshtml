@@ -135,9 +135,9 @@
                                     </div>
                                 </td>
                                 <td style="align-content: center;">
-                                    <div class="number" data-variantid="@item.Id" data-price="@price">
+                                    <div class="number" data-variantid="@item.Id" data-price="@price" data-currentprice="">
                                         <span class="minus">-</span>
-                                        <input type="text" value="1" />
+                                        <input class="qty" type="text" value="1" />
                                         <span class="plus">+</span>
                                     </div>
                                 </td>
@@ -194,6 +194,8 @@
 <script type="text/javascript">
     $(".mainBanner").css("display", "none");
     let sum = 0;
+    let origSum = 0;
+    let tempSum = 0;
 
     const toastLiveExample = document.getElementById('liveToast');
     $(document).ready(function () {
@@ -211,25 +213,33 @@
         $(".number").each(function () {
             sum += Number($(this).data("price"));
         });
+
+        origSum = sum;
     }
 
     function plusMinusFunction() {
         $('.minus').click(function () {
             var $input = $(this).parent().find('input');
+
+            if ($input.val() === 1 || Number(origSum) === Number(sum)) {
+                sum = Number(origSum).toFixed(2);
+                return false;
+            }
+
             var count = parseInt($input.val()) - 1;
             count = count < 1 ? 1 : count;
             $input.val(count);
             $input.change();
-
             let totalPriceEl = $(".priceLabel_" + $(this).parent().data("variantid"));
 
             let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
             totalPriceEl.text(priceChange);
-
-            let tempSum = sum= Number(sum - Number($(this).parent().data("price"))).toFixed(2);//sum - Number($(this).parent().data("price"));
+            
+            tempSum = Number(Number(sum) - Number($(this).parent().data("price"))).toFixed(2);
+            sum = Number(Number(sum) - Number($(this).parent().data("price"))).toFixed(2);
 
             $("#sumOfTotalPrice").text("₱ " + tempSum);
-
+            
             return false;
         });
         $('.plus').click(function () {
@@ -240,9 +250,10 @@
 
             let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
             totalPriceEl.text(priceChange);
-
-            let tempSum = sum = Number(sum + Number($(this).parent().data("price"))).toFixed(2);
-
+            
+            sum = Number(Number(sum) + Number($(this).parent().data("price"))).toFixed(2);
+            tempSum = Number(sum + Number($(this).parent().data("price"))).toFixed(2);
+            
             $("#sumOfTotalPrice").text("₱ " + tempSum);
 
             return false;

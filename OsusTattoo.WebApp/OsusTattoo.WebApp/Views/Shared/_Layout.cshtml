@@ -218,20 +218,9 @@
 </div>*@
 
 <body style="background-color: #000002;">
-    <div class="toast ">
-        <div class="toast-content">
-            <i id="icontype" class=""></i>
-
-            <div class="message">
-                <span class="text text-1">Success</span>
-                <span class="text text-2">Your changes has been saved</span>
-            </div>
-        </div>
-        <i class="fa-solid fa-xmark close"></i>
-
-        <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
-        <div class="progress active"></div>
-    </div>
+    <ul class="notifications">
+        <!-- li toast -->
+    </ul>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #000002;">
         <div class="container header-margin">
             <a href="@Url.Action("Index", "Home", new { })">
@@ -314,50 +303,63 @@
             </footer>
         </div>
     </div>
-    
+
 </body>
 </html>
 <script type="text/javascript">
     $("#cartItemsCount").text(@(Convert.ToInt32(Session["ItemCount"])));
 
-    const toast = document.querySelector(".toast");
+    const notifications = document.querySelector(".notifications"),
+        buttons = document.querySelectorAll(".buttons .btn");
 
-    const progress = document.querySelector(".progress");
-
-    let timer1, timer2;
-    function showToast(type) {
-        $("#icontype").removeClass();
-        progress.classList.remove("error", "success");
-        if (type === 'success') {
-            $("#icontype").addClass("fas fa-solid fa-check check");
-            toast.classList.add("active", "check");
-            progress.classList.add("active", "success");
-        } else {
-            $("#icontype").addClass("fas fa-solid fa-times cross");
-            toast.classList.add("active", "cross");
-            progress.classList.add("active", "error");
+    const toastDetails = {
+        timer: 5000,
+        success: {
+            icon: "fas fa-solid fa-check-circle",
+            text: "Success: This is a success toast."
+        },
+        error: {
+            icon: "fas fa-solid fa-times-circle",
+            text: "Error: This is an error toast."
+        },
+        warning: {
+            icon: "fas fa-solid fa-exclamation-circle",
+            text: "Warning: This is a warning toast."
+        },
+        info: {
+            icon: "fas fa-solid fa-info-circle",
+            text: "Info: This is an information toast."
         }
-
-        timer1 = setTimeout(() => {
-            toast.classList.remove("active");
-        }, 5000); //1s = 1000 milliseconds
-
-        timer2 = setTimeout(() => {
-            progress.classList.remove("active");
-        }, 5300);
     }
 
-    const closeIcon = document.querySelector(".close");
+    const removeToast = (toast) => {
+        toast.classList.add("hide")
+        if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+        setTimeout(() => toast.remove(), 500) // Removing the toast after 500ms
+    }
 
-    closeIcon.addEventListener("click", () => {
-        toast.classList.remove("active");
-
-        setTimeout(() => {
-            progress.classList.remove("active");
-        }, 300);
-
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-    });
-
+    const showToast = (msg, id) => {
+        // Getting the icon and text for the toast based on the id passed
+        const { icon, text } = toastDetails[id];
+        const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+        toast.className = `toast ${id}` // Setting the classes for the toast
+        // Setting the inner HTML for the toast
+        toast.innerHTML = `<div class="container">
+                <div class="row column">
+                    <div class="col-1">
+                        <i style="font-size: x-large;" class="fa-solid ${icon}"></i>
+                    </div>
+                    <div class="col-10">
+                        <span style="font-size: large; font-weight: bold;">${msg}</span>
+                    </div>
+                    <div class="col-1">
+                        <i class="fas fa-solid fa-times float-end" style="color: #aeb0d7;" onclick="removeToast(this.parentElement)"></i>
+                    </div>
+                </div>
+                </div >`
+        toast.classList.add("active");
+        notifications.appendChild(toast); // Append the toast to the notification ul
+        // Setting a timeout to remove the toast after the specified duration
+        toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer)
+    }
 </script>
