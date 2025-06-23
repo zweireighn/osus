@@ -135,9 +135,11 @@
                                     </div>
                                 </td>
                                 <td style="align-content: center;">
-                                    <div class="number" data-variantid="@item.Id" data-price="@price" data-currentprice="">
+                                    <div class="number" data-variantid="@item.Id" data-price="@price" data-currentprice="@price" data-qty="@item.Quantity">
                                         <span class="minus">-</span>
-                                        <input class="qty" type="text" value="1" />
+                                        <input id="qtyInput_@item.Id" class="qty" type="text" value="1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                              data-bs-custom-class="custom-tooltip"
+                                              data-bs-title="You reached the maximum quantity for this item!" aria-hidden="true" />
                                         <span class="plus">+</span>
                                     </div>
                                 </td>
@@ -194,8 +196,6 @@
 <script type="text/javascript">
     $(".mainBanner").css("display", "none");
     let sum = 0;
-    let origSum = 0;
-    let tempSum = 0;
 
     const toastLiveExample = document.getElementById('liveToast');
     $(document).ready(function () {
@@ -206,25 +206,19 @@
         plusMinusFunction();
         getSubTotal();
 
-        $("#sumOfTotalPrice").text("₱ " + sum);
+        $("#sumOfTotalPrice").text("₱ " + sum.toFixed(2));
     });
 
     function getSubTotal() {
         $(".number").each(function () {
-            sum += Number($(this).data("price"));
+            sum += Number($(this).attr("data-currentprice"));
         });
-
-        origSum = sum;
     }
 
     function plusMinusFunction() {
         $('.minus').click(function () {
+            sum = 0;
             var $input = $(this).parent().find('input');
-
-            if ($input.val() === 1 || Number(origSum) === Number(sum)) {
-                sum = Number(origSum).toFixed(2);
-                return false;
-            }
 
             var count = parseInt($input.val()) - 1;
             count = count < 1 ? 1 : count;
@@ -233,28 +227,40 @@
             let totalPriceEl = $(".priceLabel_" + $(this).parent().data("variantid"));
 
             let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
+            $(this).parent().attr("data-currentprice", Number($(this).parent().data("price") * $input.val()).toFixed(2));
             totalPriceEl.text(priceChange);
             
-            tempSum = Number(Number(sum) - Number($(this).parent().data("price"))).toFixed(2);
-            sum = Number(Number(sum) - Number($(this).parent().data("price"))).toFixed(2);
+            getSubTotal();
 
-            $("#sumOfTotalPrice").text("₱ " + tempSum);
-            
+            $("#sumOfTotalPrice").text("₱ " + sum.toFixed(2));
+
             return false;
         });
         $('.plus').click(function () {
+            sum = 0;
             var $input = $(this).parent().find('input');
+            
+            if (Number($(this).parent().data("qty")) == Number($input.val())) {
+                let toolTip = $("#qtyInput_" + $(this).parent().data("variantid"));
+                toolTip.tooltip("show");
+                setTimeout(function () {
+                    toolTip.tooltip('hide');
+                }, 3000);
+
+                return false;
+            }
+
             $input.val(parseInt($input.val()) + 1);
             $input.change();
             let totalPriceEl = $(".priceLabel_" + $(this).parent().data("variantid"));
 
             let priceChange = Number($(this).parent().data("price") * $input.val()).toFixed(2);
+            $(this).parent().attr("data-currentprice", Number($(this).parent().data("price") * $input.val()).toFixed(2));
             totalPriceEl.text(priceChange);
             
-            sum = Number(Number(sum) + Number($(this).parent().data("price"))).toFixed(2);
-            tempSum = Number(sum + Number($(this).parent().data("price"))).toFixed(2);
+            getSubTotal();
             
-            $("#sumOfTotalPrice").text("₱ " + tempSum);
+            $("#sumOfTotalPrice").text("₱ " + sum.toFixed(2));
 
             return false;
         });
@@ -276,7 +282,7 @@
     }
 
     function deleteCartItem(obj) {
-
+        sum = 0;
         let el = $(obj);
         let data = {
             cartId: $("#hiddenCartId").val()
@@ -290,10 +296,13 @@
             dataType: "json"
         }).done(function (result) {
             let jsonRes = JSON.parse(result);
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
             if (jsonRes) {
-                toastBootstrap.show();
                 $("#rowid_" + $("#hiddenCartId").val()).remove();
+
+                getSubTotal();
+                $("#sumOfTotalPrice").text("₱ " + sum.toFixed(2));
+
+                showToast("Successfully Remove the item", "success");
             } else {
                 alert("Unable to Delete");
             }
