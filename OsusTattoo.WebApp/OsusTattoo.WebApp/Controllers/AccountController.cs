@@ -41,7 +41,17 @@ namespace OsusTattoo.WebApp.Controllers
                 return View();
             }
 
-            return RedirectToAction("Index", "Home");
+            if ((bool)Session["FromCheckout"])
+            {
+                Session["FromCheckout"] = null;
+                //Update Order using sessionid then insert the userid in
+                //the order to associate the order to the current logged user
+                return RedirectToAction("CheckoutItems", "Checkout");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Register()

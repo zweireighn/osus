@@ -44,6 +44,7 @@ namespace OsusTattoo.WebApp.Controllers
 
         public ActionResult ProductDetails(int pId)
         {
+            Uri MyUrl = HttpContext.Request.UrlReferrer;
             Product product = _productBusiness.LoadProductByProductId(pId);
 
             ProductDetailsModel productResult = mapper.Map<ProductDetailsModel>(product);

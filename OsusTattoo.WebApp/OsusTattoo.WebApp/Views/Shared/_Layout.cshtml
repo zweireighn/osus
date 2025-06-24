@@ -237,19 +237,34 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link", @style = "color:white;" })</li>
                 </ul>
                 <form class="d-flex">
-                    <span class="mainIcon glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <span class="mainIcon glyphicon glyphicon-user" data-bs-toggle="dropdown" aria-hidden="true"></span>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="#">Welcome <b>@(string.Format("{0} {1}", ((Osus.Core.User)Session["UserInfo"])?.Firstname, ((Osus.Core.User)Session["UserInfo"])?.Lastname))!</b></a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <span class="mainIcon glyphicon glyphicon-search" data-bs-toggle="tooltip" data-bs-placement="top"
+                                              data-bs-custom-class="custom-tooltip"
+                                              data-bs-title="Search" aria-hidden="true"></span>
+                    @if ((Osus.Core.User)Session["UserInfo"] != null)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <span class="mainIcon glyphicon glyphicon-user" data-bs-toggle="dropdown" aria-hidden="true"></span>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                    <li><a class="dropdown-item" href="#">Welcome <b>@(string.Format("{0} {1}", ((Osus.Core.User)Session["UserInfo"])?.Firstname, ((Osus.Core.User)Session["UserInfo"])?.Lastname))!</b></a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login", "Account")">
+                            <span class="mainIcon glyphicon glyphicon-user" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top"
+                                              data-bs-custom-class="custom-tooltip"
+                                              data-bs-title="Login"></span>
+                        </a>
+                    }
                     <a href="@Url.Action("Cart", "Products")">
-                        <span id="cart" class="mainIcon glyphicon glyphicon-shopping-cart">
+                        <span id="cart" class="mainIcon glyphicon glyphicon-shopping-cart" data-bs-toggle="tooltip" data-bs-placement="top"
+                                              data-bs-custom-class="custom-tooltip"
+                                              data-bs-title="Cart">
                             <span id="cartItemsCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-notification bg-danger"></span>
                         </span>
                     </a>
@@ -308,7 +323,10 @@
 </html>
 <script type="text/javascript">
     $("#cartItemsCount").text(@(Convert.ToInt32(Session["ItemCount"])));
-
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
     const notifications = document.querySelector(".notifications"),
         buttons = document.querySelectorAll(".buttons .btn");
 

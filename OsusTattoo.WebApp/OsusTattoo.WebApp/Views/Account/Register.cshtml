@@ -15,36 +15,39 @@
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="row">
             @Html.LabelFor(m => m.Firstname, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
             @Html.LabelFor(m => m.Lastname, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
             <div class="offset-md-2 col-md-10">
+                <a href="@Url.Action("Login", "Account")">
+                    <input type="button" value="Back" class="btn btn-dark" />
+                </a>
                 <input type="submit" value="Register" class="btn btn-outline-dark" />
             </div>
         </div>

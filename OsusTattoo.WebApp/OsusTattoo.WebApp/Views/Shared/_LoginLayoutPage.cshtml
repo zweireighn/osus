@@ -6,11 +6,16 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <style>
+        .header-margin {
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
+        <div class="container header-margin">
             <a href="@Url.Action("Index", "Home", new { })">
                 <img style="width: 50px;" src="~/Content/image/main-logo.svg" />
             </a>
