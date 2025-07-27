@@ -103,7 +103,7 @@
 
                             if (item.Discount > 0)
                             {
-                                price = (((Convert.ToDecimal(item.Price) * Convert.ToDecimal(item.Discount)) / 100) / 10).ToString("0.00");
+                                price = ((Convert.ToDecimal(item.Price) - (Convert.ToDecimal(item.Price * item.Discount) / 100)) / 100).ToString("0.00");
 
                                 totalPrice += Convert.ToDecimal(price);
                             }

@@ -3,18 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title | Osus Tattoo</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        .header-margin {
-            margin-top: 1%;
-            margin-bottom: 1%;
-        }
-    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-black">
         <div class="container header-margin">
             <a href="@Url.Action("Index", "Home", new { })">
                 <img style="width: 50px;" src="~/Content/image/main-logo.svg" />
@@ -32,10 +30,39 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    <div class="bg-black section-padding">
+        <div class="container">
+            <div class="row" style="margin-top: 3%;">
+                <div class="col-1"><img src="~/Content/image/osus-logo-footer.png" class="float-sm-end" /></div>
+                <div class="col-5">
+                    <b style="color: #ffffff;"><label class="form-label">About Us</label></b>
+                    <p class="form-p text-lightgray">Driven by passion and precision, our team is dedicated to delivering the best tatoo supplies in the Philippines</p>
+                </div>
+                <div class="col-3">
+                    <b style="color: #ffffff;"><label class="form-label">Quick Links</label></b>
+                    <p class="form-p text-lightgray">Featured Products</p>
+                    <p class="form-p text-lightgray">Best Sellers</p>
+                    <p class="form-p text-lightgray">All Products</p>
+                </div>
+                <div class="col-3">
+                    <b style="color: #ffffff;"><label class="form-label">Info</label></b>
+                    <p class="form-p text-lightgray">Artists</p>
+                    <p class="form-p text-lightgray">Events</p>
+                    <p class="form-p text-lightgray">Contact Us</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            <hr style="background-color: #707272; height: 1px; border: 0;" />
+            <footer>
+                <p class="text-lightgray">&copy; @DateTime.Now.Year - Osus Tattoo</p>
+            </footer>
+        </div>
+    </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

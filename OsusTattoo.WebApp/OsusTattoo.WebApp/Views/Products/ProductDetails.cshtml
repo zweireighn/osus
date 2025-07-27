@@ -31,8 +31,6 @@
                 margin: 0 auto;
             }
         }
-
-
     </style>
 </head>
 
@@ -151,7 +149,7 @@
                                 <button id="btnAddToCart" class="btn btn-outline-dark btn-outline-osus" type="button" onclick="checkIfItemExistInSameUser()">Add to Cart</button>
                             </div>
                             <div class="d-grid gap-2 spacing">
-                                <button class="btn btn-dark btn-outline-osus" type="button">Buy Now</button>
+                                <button class="btn btn-primary-osus btn-outline-osus" type="button">Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -272,7 +270,7 @@
     function initPriceChange() {
         let orig = $("#prodOrigPrice");
         let dc = $("#prodDCPrice");
-        
+
         if (Number(orig.data("dc")) <= 0) {
             orig.text("₱ " + Number(orig.data("price")).toFixed(2)).css({ "text-decoration": "none", "color": "#000000", "font-size": "x-large" });
             dc.css({ "display": "none" });
@@ -364,5 +362,5 @@
         });
     }
 
-    
+
 </script>
